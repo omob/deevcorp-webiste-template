@@ -1,35 +1,113 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
+import styled from "styled-components"
+import logoImage from "../images/deevcorp-icon.png"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+const HeaderWrapper = styled.header`
+  background: #000;
+  position: relative;
+`
+
+const NavBar = styled.nav`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: 80px;
+`
+const Logo = styled.img`
+  background: url(${props => props.logo}) center center no-repeat;
+  background-size: contain;
+  height: 60px;
+  width: 60px;
+  border: none;
+  justify-self: start;
+`
+
+const NavButton = styled.button.attrs(props => ({
+  className: props.className,
+}))`
+  width: 50px;
+  height: 45px;
+  background: 0 0;
+  border: none;
+  padding-left: 10px;
+  z-index: 1000;
+  transition: 0.7s;
+  outline: 0;
+  justify-self: end;
+  margin-top: 12px;
+  position: relative;
+
+  & > span {
+      height: 4px;
+      content: "-";
+      background-color: #b5b5b5;
+      display: block;
+      margin: 6px 4px 8px -2px;
+      width: 35px;
+      outline: 0;
+    }
+  }
+
+  .top-bar, .bottom-bar {
+    transition: .1s
+  }
+  &.toggled {
+    .top-bar {
+      transform: rotate(45deg);
+      transform-origin: -8% 90%;
+    }
+    .bottom-bar {
+        transform: rotate(-45deg);
+        transform-origin: 10% 90%;
+    }
+    .middle-bar {
+      opacity: 0
+    }
+  }
+
+`
+const Header = ({ siteTitle }) => {
+  // const {
+  //   siteLogo: {
+  //     childImageSharp: { fluid: logo },
+  //   },
+  // } = useStaticQuery(graphql`
+  //   query {
+  //     siteLogo: file(relativePath: { eq: "deevcorp-icon.png" }) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 300) {
+  //           ...GatsbyImageSharpFluid
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+  // console.log(logo)
+
+  const [isToggled, setToggled] = useState(false)
+
+  return (
+    <HeaderWrapper>
+      <NavBar>
+        <Link to="/">
+          <Logo logo={logoImage} />
         </Link>
-      </h1>
-    </div>
-  </header>
-)
+        <NavButton
+          className={isToggled ? "toggled" : null}
+          onClick={() => setToggled(!isToggled)}
+        >
+          <span className="top-bar"></span>
+          <span className="middle-bar"></span>
+          <span className="bottom-bar"></span>
+        </NavButton>
+      </NavBar>
+    </HeaderWrapper>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
