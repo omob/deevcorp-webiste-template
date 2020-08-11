@@ -9,8 +9,11 @@ import styled from "styled-components"
 import playBackButton from "../images/videoBtn.png"
 import videoSrc from "../assets/video/demo.mp4"
 
+// clients logo
+import stillEarthLogo from "../images/clients/sel.png"
+
 const ContainerWrapper = styled.section`
-  display: grid;
+  // display: grid;
 `
 
 const HeaderTitle = styled.h2`
@@ -19,7 +22,8 @@ const HeaderTitle = styled.h2`
 const SectionWrapper = styled.section`
   padding-left: 10%;
   padding-right 10%;
-  padding-top: 2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
 `
 const SectionTitle = styled(HeaderTitle)`
   font-size: 46px;
@@ -76,6 +80,82 @@ const PlayButton = styled.button`
   }
 `
 
+const SectionThree = styled(SectionWrapper)``
+
+const Projects = styled.section`
+  margin-top: 5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+`
+const Project = styled.div`
+  background-color: ${({ theme }) => theme.bodyBg};
+  height: 500px;
+  padding: 20px;
+
+  h4 {
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+`
+
+const Button = styled.button`
+  margin-top: 1em;
+  width: 120px;
+  padding: 4px 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  ${({ theme }) => theme.button};
+  border-width: 3px;
+  float: right;
+  transition: 0.3s;
+  outline: none;
+  &:focus {
+    border: none;
+  }
+  &: hover {
+
+  }
+`
+
+const PortfolioBtn = styled(Button)``
+
+const SectionFour = styled(SectionWrapper)`
+  background-color: ${({ theme }) => theme.bodyBg};
+`
+const ClientsWrapper = styled.div`
+  padding-top: 4em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
+  max-width: 90%;
+  margin: auto;
+`
+const Client = styled.div`
+  padding: 10px 20px;
+  width: content;
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid gray;
+
+  p {
+    font-size: 20px;
+    line-height: 1em;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      width: content;
+      grid-template-columns: auto;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+`
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
@@ -101,15 +181,52 @@ const IndexPage = () => (
           {/* <PlayButton /> */}
         </VideoWrapper>
       </SectionTwo>
+      <SectionThree>
+        <SectionTitle>Portfolio</SectionTitle>
+        <Projects>
+          <Project>
+            <h4>Dont Forget to Say Hi</h4>
+          </Project>
+          <Project>
+            <h4>Learning Management System</h4>
+          </Project>
+          <Project>
+            <h4>Boldtouch Interiors & Designs</h4>
+          </Project>
+          <Project>
+            <h4>Sanabliss Global</h4>
+          </Project>
+        </Projects>
+        <Link to="/">
+          <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
+        </Link>
+      </SectionThree>
+      <SectionFour>
+        <SectionTitle>Trusted Clients</SectionTitle>
+        <ClientsWrapper>
+          <Client>
+            <img src={stillEarthLogo} alt="" />
+            <p>Still Earth Construction & Realty</p>
+          </Client>
+          <Client>
+            <img src={stillEarthLogo} alt="" />
+            <p>BoldTouch Interiors & Designs</p>
+          </Client>
+          <Client>
+            <img src="" alt="" />
+            <p>Paul Usoro & Co</p>
+          </Client>
+        </ClientsWrapper>
+      </SectionFour>
     </ContainerWrapper>
-    <h1>Hi people</h1>
+    {/* <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
     <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    <Link to="/using-typescript/">Go to "Using TypeScript"</Link> */}
   </Layout>
 )
 

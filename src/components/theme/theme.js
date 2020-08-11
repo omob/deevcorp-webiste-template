@@ -8,6 +8,8 @@ export const lightTheme = {
   toggleBorder: "#FFF",
   gradient: "linear-gradient(#39598A, #79D7ED)",
   bgImage: `url(${bgLight}) center center no-repeat`,
+  button: {},
+  bodyBg: "#fff",
 }
 
 export const darkTheme = {
@@ -16,4 +18,10 @@ export const darkTheme = {
   toggleBorder: "#6B8096",
   gradient: "linear-gradient(#091236, #1E215D)",
   bgImage: `url(${bgDark}) center center no-repeat`,
+  button: {
+    background: "#000000",
+    "border-color": "#fff",
+    color: "#fff",
+  },
+  bodyBg: "#141414",
 }

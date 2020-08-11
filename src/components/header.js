@@ -5,7 +5,7 @@ import styled from "styled-components"
 import logoImage from "../images/deevcorp-icon.png"
 
 const HeaderWrapper = styled.header`
-  background: #000;
+  background: ${({ theme }) => theme.body}
   position: relative;
 `
 
@@ -19,11 +19,11 @@ const NavBar = styled.nav`
 `
 const Logo = styled.img`
   background: url(${props => props.logo}) center center no-repeat;
-  background-size: contain;
+  background-size: cover;
   height: 60px;
   width: 60px;
-  border: none;
-  justify-self: start;
+  outline: none;
+  color: #000;
 `
 
 const NavButton = styled.button.attrs(props => ({
