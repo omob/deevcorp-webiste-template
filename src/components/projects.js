@@ -11,9 +11,9 @@ const ProjectsWrapper = styled.section`
 `
 const Project = styled(BackgroundImage)`
   background-color: ${({ theme }) => theme.bodyBg};
-  height: 600px;
+  height: 500px;
   position: relative;
-  background-size: cover;
+  background-size: contain;
 `
 const ProjectLink = styled(Link)`
   position: relative;
@@ -25,11 +25,17 @@ const ProjectLink = styled(Link)`
 
   &:hover {
     h4 {
-      font-size: 20px;
+      font-size: 30px;
       visibility: visible;
+      bottom: 50%;
+
+      span {
+        font-size: 20px;
+      }
     }
     section {
       opacity: 0.6 !important;
+      transform: translateY(-20px);
     }
   }
 `
@@ -42,12 +48,20 @@ color: #fff;
   font-weight: 300;
   text-align: center;
   position: absolute;
-  bottom: 10%;
+  bottom: 30%;
   left: 0;
   width: 100%;
   text-decoration: none !important;
   transition: 0.3s;
   visibility: hidden;
+
+  span {
+      font-weight: bold;
+      letter-spacing: 4px;
+      display: block;
+      font-size: 1px;
+      margin-top: 5px;
+  }
 `
 const Projects = () => {
   const {
@@ -58,6 +72,7 @@ const Projects = () => {
         nodes {
           slug
           title
+          type
           description {
             description
           }
@@ -74,12 +89,17 @@ const Projects = () => {
   return (
     <>
       <ProjectsWrapper>
-        {projectsList.map(({ title, slug, projectImage: { fluid: image } }) => (
-          <ProjectLink to={"projects/" + slug} key={slug}>
-            <Project Tag="section" fluid={image}></Project>
-            <ProjectTitle>{title}</ProjectTitle>
-          </ProjectLink>
-        ))}
+        {projectsList.map(
+          ({ title, slug, type, projectImage: { fluid: image } }) => (
+            <ProjectLink to={"projects/" + slug} key={slug}>
+              <Project Tag="section" fluid={image}></Project>
+              <ProjectTitle>
+                {title}
+                <span>{type}</span>
+              </ProjectTitle>
+            </ProjectLink>
+          )
+        )}
       </ProjectsWrapper>
     </>
   )
