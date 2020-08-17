@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyles = createGlobalStyle`
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&display=swap');
+
   *,
   *::after,
   *::before {
@@ -22,7 +24,7 @@ body {
     transition: all 0.25s linear;
 }
 body {
-  font-family: georgia, serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;

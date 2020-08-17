@@ -1,16 +1,13 @@
-import React from "react"
 import { Link } from "gatsby"
-
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import React from "react"
 import styled from "styled-components"
-
-import playBackButton from "../images/videoBtn.png"
 import videoSrc from "../assets/video/demo.mp4"
-
+import Layout from "../components/layout"
+import ProjectsWrapper from "../components/projects"
+import SEO from "../components/seo"
 // clients logo
 import stillEarthLogo from "../images/clients/sel.png"
+import playBackButton from "../images/videoBtn.png"
 
 const ContainerWrapper = styled.section`
   // display: grid;
@@ -24,6 +21,10 @@ const SectionWrapper = styled.section`
   padding-right 10%;
   padding-top: 4em;
   padding-bottom: 4em;
+
+  p {
+    font-weight: 300;
+  }
 `
 const SectionTitle = styled(HeaderTitle)`
   font-size: 46px;
@@ -31,12 +32,12 @@ const SectionTitle = styled(HeaderTitle)`
 `
 
 const SectionOne = styled(SectionWrapper)`
-  align-self: center;
   padding-top: 7em;
   padding-bottom: 5em;
 
   p {
     max-width: 600px;
+    font-weight: 300;
   }
 `
 
@@ -82,23 +83,6 @@ const PlayButton = styled.button`
 
 const SectionThree = styled(SectionWrapper)``
 
-const Projects = styled.section`
-  margin-top: 5em;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-`
-const Project = styled.div`
-  background-color: ${({ theme }) => theme.bodyBg};
-  height: 500px;
-  padding: 20px;
-
-  h4 {
-    font-size: 20px;
-    text-transform: uppercase;
-  }
-`
-
 const Button = styled.button`
   margin-top: 1em;
   width: 120px;
@@ -142,6 +126,7 @@ const Client = styled.div`
   p {
     font-size: 20px;
     line-height: 1em;
+    font-weight: 300;
   }
 
   @media (max-width: 768px) {
@@ -183,20 +168,7 @@ const IndexPage = () => (
       </SectionTwo>
       <SectionThree>
         <SectionTitle>Portfolio</SectionTitle>
-        <Projects>
-          <Project>
-            <h4>Dont Forget to Say Hi</h4>
-          </Project>
-          <Project>
-            <h4>Learning Management System</h4>
-          </Project>
-          <Project>
-            <h4>Boldtouch Interiors & Designs</h4>
-          </Project>
-          <Project>
-            <h4>Sanabliss Global</h4>
-          </Project>
-        </Projects>
+        <ProjectsWrapper></ProjectsWrapper>
         <Link to="/">
           <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
         </Link>
