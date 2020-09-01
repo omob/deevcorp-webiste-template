@@ -8,12 +8,40 @@ const ProjectsWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
+
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 50px !important;
+
+    & {
+    }
+  }
+
+  @media (max-width: 768px) {
+    & {
+      gap: 25px;
+
+      section {
+        height: 300px;
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    & {
+      gap: 30px;
+      section {
+        height: 450px;
+      }
+    }
+  }
 `
 const Project = styled(BackgroundImage)`
   background-color: ${({ theme }) => theme.bodyBg};
   height: 500px;
   position: relative;
-  background-size: contain;
+  background-size: cover;
 `
 const ProjectLink = styled(Link)`
   position: relative;
@@ -36,6 +64,45 @@ const ProjectLink = styled(Link)`
     section {
       opacity: 0.6 !important;
       transform: translateY(-20px);
+    }
+  }
+
+  @media (max-width: 550px) {
+    & {
+      h4 {
+        visibility: visible;
+        font-size: 20px;
+        span {
+          font-size: 16px;
+        }
+      }
+      section {
+        opacity: 0.6 !important;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      h4 {
+        font-size: 20px;
+        bottom: 40%;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    &:hover {
+      h4 {
+        font-size: 24px !important;
+        bottom: 50%;
+        span {
+          font-size: 16px;
+        }
+      }
     }
   }
 `

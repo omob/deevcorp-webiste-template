@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
 import logoImage from "../images/deevcorp-icon.png"
+import ToggleButton from "./toggle/toggle"
 
 const HeaderWrapper = styled.header`
   background: ${({ theme }) => theme.body}
@@ -93,9 +94,8 @@ const Header = ({ siteTitle }) => {
   return (
     <HeaderWrapper>
       <NavBar>
-        <Link to="/">
-          <Logo logo={logoImage} />
-        </Link>
+        <Logo logo={logoImage} />
+        {/* <Link to="/"></Link> */}
         <NavButton
           className={isToggled ? "toggled" : null}
           onClick={() => setToggled(!isToggled)}
@@ -105,6 +105,7 @@ const Header = ({ siteTitle }) => {
           <span className="bottom-bar"></span>
         </NavButton>
       </NavBar>
+      {/* <ToggleButton></ToggleButton> */}
     </HeaderWrapper>
   )
 }

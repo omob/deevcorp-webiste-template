@@ -10,6 +10,7 @@ export const lightTheme = {
   bgImage: `url(${bgLight}) center center no-repeat`,
   button: {},
   bodyBg: "#fff",
+  theme: "light",
 }
 
 export const darkTheme = {
@@ -24,4 +25,5 @@ export const darkTheme = {
     color: "#fff",
   },
   bodyBg: "#141414",
+  theme: "dark",
 }
