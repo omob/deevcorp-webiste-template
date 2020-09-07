@@ -3,28 +3,23 @@ import PropTypes from "prop-types"
 import React, { useState } from "react"
 import styled from "styled-components"
 import logoImage from "../images/deevcorp-icon.png"
-import ToggleButton from "./toggle/toggle"
 
 const HeaderWrapper = styled.header`
-  background: ${({ theme }) => theme.body}
+  background: ${({ theme }) => theme.body};
   position: relative;
 `
 
 const NavBar = styled.nav`
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1280px;
   padding: 10px;
   display: grid;
   grid-template-columns: 3fr 1fr;
   height: 80px;
 `
 const Logo = styled.img`
-  background: url(${props => props.logo}) center center no-repeat;
-  background-size: cover;
-  height: 60px;
-  width: 60px;
-  outline: none;
-  color: #000;
+  height: 85px;
+  width: auto;
 `
 
 const NavButton = styled.button.attrs(props => ({
@@ -72,30 +67,12 @@ const NavButton = styled.button.attrs(props => ({
 
 `
 const Header = ({ siteTitle }) => {
-  // const {
-  //   siteLogo: {
-  //     childImageSharp: { fluid: logo },
-  //   },
-  // } = useStaticQuery(graphql`
-  //   query {
-  //     siteLogo: file(relativePath: { eq: "deevcorp-icon.png" }) {
-  //       childImageSharp {
-  //         fluid(maxWidth: 300) {
-  //           ...GatsbyImageSharpFluid
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  // console.log(logo)
-
   const [isToggled, setToggled] = useState(false)
-
   return (
     <HeaderWrapper>
       <NavBar>
         <Link to="/">
-          <Logo logo={logoImage} />
+          <Logo src={logoImage} alt={siteTitle} />
         </Link>
         <NavButton
           className={isToggled ? "toggled" : null}
@@ -106,7 +83,6 @@ const Header = ({ siteTitle }) => {
           <span className="bottom-bar"></span>
         </NavButton>
       </NavBar>
-      {/* <ToggleButton></ToggleButton> */}
     </HeaderWrapper>
   )
 }

@@ -40,10 +40,6 @@ const Layout = ({ children }) => {
       <>
         <GlobalStyles />
         <Header siteTitle={data.site.siteMetadata.title} />
-
-        {/* <ToggleButton theme={theme} toggleTheme={toggleTheme}></ToggleButton>
-         */}
-
         <ToggleButton toggleTheme={toggleTheme}></ToggleButton>
 
         <main>{children}</main>

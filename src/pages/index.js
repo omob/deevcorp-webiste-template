@@ -70,7 +70,7 @@ const SectionOne = styled(SectionWrapper)`
 `
 
 const SectionTwo = styled(SectionWrapper)`
-  background: ${({ theme }) => theme.bgImage};
+  background: ${({ theme }) => theme.bgGradient};
   background-size: cover;
   height: 600px;
 
