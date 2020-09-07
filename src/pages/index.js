@@ -21,7 +21,7 @@ const HeaderTitle = styled.h2`
 `
 const SectionWrapper = styled.section`
   padding-left: 10%;
-  padding-right 10%;
+  padding-right: 10%;
   padding-top: 4em;
   padding-bottom: 4em;
 
@@ -53,6 +53,18 @@ const SectionOne = styled(SectionWrapper)`
   @media (max-width: 768px) {
     p {
       font-size: 1.26em;
+    }
+  }
+
+  @media (min-width: 2000px) {
+    & {
+      h2 {
+        font-size: 7em;
+      }
+      p {
+        font-size: 2em;
+        max-width: 70%;
+      }
     }
   }
 `
