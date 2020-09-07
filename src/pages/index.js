@@ -9,12 +9,15 @@ import SEO from "../components/seo"
 import stillEarthLogo from "../images/clients/sel.png"
 import playBackButton from "../images/videoBtn.png"
 
-const ContainerWrapper = styled.section`
-  // display: grid;
-`
+const ContainerWrapper = styled.section``
 
 const HeaderTitle = styled.h2`
-  font-size: 72px;
+  font-size: 6em;
+  @media (max-width: 768px) {
+    & {
+      font-size: 5em;
+    }
+  }
 `
 const SectionWrapper = styled.section`
   padding-left: 10%;
@@ -27,8 +30,14 @@ const SectionWrapper = styled.section`
   }
 `
 const SectionTitle = styled(HeaderTitle)`
-  font-size: 46px;
+  font-size: 4em;
   text-align: center;
+
+  @media (max-width: 768px) {
+    & {
+      font-size: 3em;
+    }
+  }
 `
 
 const SectionOne = styled(SectionWrapper)`
@@ -36,8 +45,15 @@ const SectionOne = styled(SectionWrapper)`
   padding-bottom: 5em;
 
   p {
-    max-width: 600px;
-    font-weight: 300;
+    max-width: 800px;
+    font-size: 1.5em;
+    line-height: 1.7em;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 1.26em;
+    }
   }
 `
 
@@ -45,6 +61,14 @@ const SectionTwo = styled(SectionWrapper)`
   background: ${({ theme }) => theme.bgImage};
   background-size: cover;
   height: 600px;
+
+  @media (max-width: 768px) {
+    &,
+    & > div {
+      height: fit-content;
+      width: 100%;
+    }
+  }
 `
 
 const VideoWrapper = styled.div`
@@ -173,7 +197,7 @@ const IndexPage = () => (
           <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
         </Link>
       </SectionThree>
-      <SectionFour>
+      {/* <SectionFour>
         <SectionTitle>Trusted Clients</SectionTitle>
         <ClientsWrapper>
           <Client>
@@ -189,7 +213,7 @@ const IndexPage = () => (
             <p>Paul Usoro & Co</p>
           </Client>
         </ClientsWrapper>
-      </SectionFour>
+      </SectionFour> */}
     </ContainerWrapper>
     {/* <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
