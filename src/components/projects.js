@@ -9,39 +9,36 @@ const ProjectsWrapper = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 50px;
 
-  @media (max-width: 550px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     align-content: center;
-    gap: 50px !important;
 
     & {
-    }
-  }
-
-  @media (max-width: 768px) {
-    & {
-      gap: 25px;
-
       section {
-        height: 300px;
+        height: 500px;
       }
     }
   }
 
   @media (min-width: 768px) and (max-width: 992px) {
     & {
-      gap: 30px;
+      gap: 25px;
       section {
-        height: 450px;
+        height: 600px;
       }
     }
   }
 `
 const Project = styled(BackgroundImage)`
   background-color: ${({ theme }) => theme.bodyBg};
-  height: 500px;
+  height: 600px;
   position: relative;
   background-size: cover;
+  @media (min-width: 1280px) {
+    & {
+      height: 750px;
+    }
+  }
 `
 const ProjectLink = styled(Link)`
   position: relative;
@@ -71,9 +68,11 @@ const ProjectLink = styled(Link)`
     & {
       h4 {
         visibility: visible;
-        font-size: 20px;
+        font-size: 1.6em;
+
         span {
-          font-size: 16px;
+          font-size: 18px !important;
+          font-weight: 300;
         }
       }
       section {
@@ -82,14 +81,19 @@ const ProjectLink = styled(Link)`
     }
   }
 
-  @media (max-width: 768px) {
-    &:hover {
+  @media (min-width: 550px) and (max-width: 768px) {
+    & {
       h4 {
-        font-size: 20px;
-        bottom: 40%;
+        visibility: visible;
+        font-size: 2em;
+
         span {
-          font-size: 16px;
+          font-size: 24px !important;
+          font-weight: 300;
         }
+      }
+      section {
+        opacity: 0.6 !important;
       }
     }
   }
@@ -97,10 +101,22 @@ const ProjectLink = styled(Link)`
   @media (min-width: 768px) and (max-width: 992px) {
     &:hover {
       h4 {
-        font-size: 24px !important;
+        font-size: 2em;
         bottom: 50%;
         span {
-          font-size: 16px;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    &:hover {
+      h4 {
+        font-size: 2.5em !important;
+        bottom: 50%;
+        span {
+          font-size: 40px;
         }
       }
     }
@@ -108,11 +124,10 @@ const ProjectLink = styled(Link)`
 `
 
 const ProjectTitle = styled.h4`
-//   color: ${({ theme }) => theme.text} !important;
-color: #fff;
+  color: ${({ theme }) => theme.text} !important;
   font-size: 1px;
   text-transform: capitalize;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
   position: absolute;
   bottom: 30%;
@@ -123,11 +138,13 @@ color: #fff;
   visibility: hidden;
 
   span {
-      font-weight: bold;
-      letter-spacing: 4px;
-      display: block;
-      font-size: 1px;
-      margin-top: 5px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    display: block;
+    font-size: 1px;
+    margin-top: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 `
 const Projects = () => {
