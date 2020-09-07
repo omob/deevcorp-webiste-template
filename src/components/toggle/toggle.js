@@ -32,13 +32,13 @@ const ToggleContainer = styled.button`
     // sun icon
     &:first-child {
       transform: ${({ theme: { theme } }) =>
-        theme == "light" ? "translateY(0)" : "translateY(100px)"};
+        theme === "light" ? "translateY(0)" : "translateY(100px)"};
     }
 
     // moon icon
     &:nth-child(2) {
       transform: ${({ theme: { theme } }) =>
-        theme == "light" ? "translateY(-100px)" : "translateY(0)"};
+        theme === "light" ? "translateY(-100px)" : "translateY(0)"};
     }
   }
 `
@@ -53,7 +53,6 @@ const ToggleButton = ({ theme, toggleTheme }) => {
 }
 
 ToggleButton.propTypes = {
-  theme: string.isRequired,
   toggleTheme: func.isRequired,
 }
 

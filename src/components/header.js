@@ -94,8 +94,9 @@ const Header = ({ siteTitle }) => {
   return (
     <HeaderWrapper>
       <NavBar>
-        <Logo logo={logoImage} />
-        {/* <Link to="/"></Link> */}
+        <Link to="/">
+          <Logo logo={logoImage} />
+        </Link>
         <NavButton
           className={isToggled ? "toggled" : null}
           onClick={() => setToggled(!isToggled)}
