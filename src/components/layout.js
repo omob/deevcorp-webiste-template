@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
@@ -13,6 +6,7 @@ import { GlobalStyles } from "./theme/global"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import ToggleButton from "./toggle/toggle"
+import Footer from "./footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -41,13 +35,8 @@ const Layout = ({ children }) => {
         <GlobalStyles />
         <Header siteTitle={data.site.siteMetadata.title} />
         <ToggleButton toggleTheme={toggleTheme}></ToggleButton>
-
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer siteTitle={data.site.siteMetadata.title}></Footer>
       </>
     </ThemeProvider>
   )
