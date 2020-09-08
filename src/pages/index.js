@@ -5,9 +5,9 @@ import videoSrc from "../assets/video/demo.mp4"
 import Layout from "../components/layout"
 import ProjectsWrapper from "../components/projects"
 import SEO from "../components/seo"
-// clients logo
-import stillEarthLogo from "../images/clients/sel.png"
-import playBackButton from "../images/videoBtn.png"
+
+// import playBackButton from "../images/videoBtn.png"
+import Clients from "../components/clients"
 
 const ContainerWrapper = styled.section``
 
@@ -97,25 +97,25 @@ const VideoWrapper = styled.div`
     height: auto;
   }
 `
-const PlayButton = styled.button`
-  background: url(${playBackButton}) center center no-repeat;
-  background-size: cover;
-  height: 70px;
-  width: 70px;
-  outline: none;
-  border: none;
-  box-shadow: 0px 0px 10px #020202;
-  border-radius: 100%;
-  margin: auto;
-  cursor: pointer;
-  position: absolute;
-  left: 47%;
-  top: 40%;
+// const PlayButton = styled.button`
+//   background: url(${playBackButton}) center center no-repeat;
+//   background-size: cover;
+//   height: 70px;
+//   width: 70px;
+//   outline: none;
+//   border: none;
+//   box-shadow: 0px 0px 10px #020202;
+//   border-radius: 100%;
+//   margin: auto;
+//   cursor: pointer;
+//   position: absolute;
+//   left: 47%;
+//   top: 40%;
 
-  &:focus {
-    box-shadow: 0px 0px 10px #fafafa;
-  }
-`
+//   &:focus {
+//     box-shadow: 0px 0px 10px #fafafa;
+//   }
+// `
 
 const SectionThree = styled(SectionWrapper)``
 
@@ -142,39 +142,6 @@ const PortfolioBtn = styled(Button)``
 
 const SectionFour = styled(SectionWrapper)`
   background-color: ${({ theme }) => theme.bodyBg};
-`
-const ClientsWrapper = styled.div`
-  padding-top: 4em;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2em;
-  max-width: 90%;
-  margin: auto;
-`
-const Client = styled.div`
-  padding: 10px 20px;
-  width: content;
-  display: grid;
-  align-items: center;
-  gap: 10px;
-  border: 2px solid gray;
-
-  p {
-    font-size: 20px;
-    line-height: 1em;
-    font-weight: 300;
-  }
-
-  @media (max-width: 768px) {
-    & {
-      width: content;
-      grid-template-columns: auto;
-
-      p {
-        font-size: 18px;
-      }
-    }
-  }
 `
 
 const IndexPage = () => (
@@ -208,23 +175,10 @@ const IndexPage = () => (
           <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
         </Link>
       </SectionThree>
-      {/* <SectionFour>
+      <SectionFour>
         <SectionTitle>Trusted Clients</SectionTitle>
-        <ClientsWrapper>
-          <Client>
-            <img src={stillEarthLogo} alt="" />
-            <p>Still Earth Construction & Realty</p>
-          </Client>
-          <Client>
-            <img src={stillEarthLogo} alt="" />
-            <p>BoldTouch Interiors & Designs</p>
-          </Client>
-          <Client>
-            <img src="" alt="" />
-            <p>Paul Usoro & Co</p>
-          </Client>
-        </ClientsWrapper>
-      </SectionFour> */}
+        <Clients></Clients>
+      </SectionFour>
     </ContainerWrapper>
     {/* <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
