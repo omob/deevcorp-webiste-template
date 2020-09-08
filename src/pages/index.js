@@ -185,10 +185,9 @@ const IndexPage = () => (
         <HeaderTitle>We Create</HeaderTitle>
         <div>
           <p>
-            <span>DEEVCORP DIGITAL AGENCY</span> dolor sit amet, consectetur
-            adipiscing elit. Nulla imperdiet dolor a tortor blandit interdum a
-            sed elit. Orci varius natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus
+            At <span>DEEVCORP DIGITAL AGENCY</span> we create simple, yet
+            professional websites and applications using modern design trends
+            and technology.
           </p>
         </div>
       </SectionOne>
