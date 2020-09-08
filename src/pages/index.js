@@ -45,14 +45,14 @@ const SectionOne = styled(SectionWrapper)`
   padding-bottom: 5em;
 
   p {
-    max-width: 800px;
-    font-size: 1.5em;
+    max-width: 900px;
+    font-size: 1.8em;
     line-height: 1.7em;
   }
 
   @media (max-width: 768px) {
     p {
-      font-size: 1.26em;
+      font-size: 1.6em;
     }
   }
 
@@ -62,7 +62,7 @@ const SectionOne = styled(SectionWrapper)`
         font-size: 7em;
       }
       p {
-        font-size: 2em;
+        font-size: 2.5em;
         max-width: 70%;
       }
     }
@@ -132,9 +132,6 @@ const Button = styled.button`
   outline: none;
   &:focus {
     border: none;
-  }
-  &: hover {
-
   }
 `
 

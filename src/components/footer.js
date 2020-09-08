@@ -40,6 +40,12 @@ const GetInTouch = styled(SectionWrapper)`
 
       a {
         color: inherit;
+        transition: 0.5s ease;
+      }
+
+      a:hover {
+        background-color: ${({ theme }) => theme.text};
+        color: ${({ theme }) => theme.bodyBg};
       }
     }
   }
@@ -57,7 +63,7 @@ const Footer = ({ siteTitle }) => {
       <GetInTouch>
         <SectionTitle>Get in Touch</SectionTitle>
         <p>
-          You can reach us by sending us a mail at
+          You can reach us by sending us an email at
           <span>
             <a href="mailto:hello@deevcorp.com"> hello@deevcorp.com</a>
           </span>{" "}

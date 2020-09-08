@@ -1,18 +1,18 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
 
 const SectionWrapper = styled.section`
   padding-left: 10%;
-  padding-right 10%;
+  padding-right: 10%;
   padding-top: 4em;
   padding-bottom: 4em;
 
   p {
     font-weight: 300;
     font-size: 1.5em;
-    line-height: 1.7em
+    line-height: 1.7em;
   }
 
   @media (max-width: 768px) {
@@ -23,7 +23,8 @@ const SectionWrapper = styled.section`
 `
 
 const HeaderBanner = styled(SectionWrapper)`
-  height: 400px;
+  min-height: 400px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -55,17 +56,42 @@ const HeaderBanner = styled(SectionWrapper)`
 `
 const Content = styled(SectionWrapper)`
   height: contain;
-  background-color: #0b0b0b;
   background-color: ${({ theme }) => theme.bodyBg};
 `
 
+const BreadCrumbs = styled.div`
+  color: gray;
+  font-weight: 300;
+  font-size: 1em;
+  position: relative;
+  top: 20px;
+  a {
+    color: inherit;
+    transition: 0.5s ease;
+  }
+
+  a:hover {
+    background-color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.bodyBg};
+  }
+  @media (min-width: 768px) {
+    & {
+      font-size: 1.3em;
+    }
+  }
+`
+
 const ProjectTemplate = ({ data: { project } }) => {
-  console.log(project)
   return (
     <Layout>
       <HeaderBanner>
         <h1>{project.title}</h1>
         <p>{project.type}</p>
+
+        <BreadCrumbs>
+          <Link to="/">Home</Link> {">"} <Link to="/projects"> Projects </Link>
+          {">"} {project.title}
+        </BreadCrumbs>
       </HeaderBanner>
       <Content>
         <p>
