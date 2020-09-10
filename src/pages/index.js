@@ -5,9 +5,10 @@ import videoSrc from "../assets/video/demo.mp4"
 import Layout from "../components/layout"
 import ProjectsWrapper from "../components/projects"
 import SEO from "../components/seo"
-
 // import playBackButton from "../images/videoBtn.png"
 import Clients from "../components/clients"
+
+import HeadingSection from "../components/heading-section"
 
 const ContainerWrapper = styled.section``
 
@@ -43,30 +44,6 @@ const SectionTitle = styled(HeaderTitle)`
 const SectionOne = styled(SectionWrapper)`
   padding-top: 7em;
   padding-bottom: 5em;
-
-  p {
-    max-width: 900px;
-    font-size: 1.8em;
-    line-height: 1.7em;
-  }
-
-  @media (max-width: 768px) {
-    p {
-      font-size: 1.6em;
-    }
-  }
-
-  @media (min-width: 2000px) {
-    & {
-      h2 {
-        font-size: 7em;
-      }
-      p {
-        font-size: 2.5em;
-        max-width: 70%;
-      }
-    }
-  }
 `
 
 const SectionTwo = styled(SectionWrapper)`
@@ -97,25 +74,6 @@ const VideoWrapper = styled.div`
     height: auto;
   }
 `
-// const PlayButton = styled.button`
-//   background: url(${playBackButton}) center center no-repeat;
-//   background-size: cover;
-//   height: 70px;
-//   width: 70px;
-//   outline: none;
-//   border: none;
-//   box-shadow: 0px 0px 10px #020202;
-//   border-radius: 100%;
-//   margin: auto;
-//   cursor: pointer;
-//   position: absolute;
-//   left: 47%;
-//   top: 40%;
-
-//   &:focus {
-//     box-shadow: 0px 0px 10px #fafafa;
-//   }
-// `
 
 const SectionThree = styled(SectionWrapper)``
 
@@ -146,14 +104,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <ContainerWrapper>
       <SectionOne>
-        <HeaderTitle>We Create</HeaderTitle>
-        <div>
-          <p>
-            At <span>DEEVCORP DIGITAL AGENCY</span> we create simple, yet
-            professional websites and applications using modern design trends
-            and technology.
-          </p>
-        </div>
+        <HeadingSection></HeadingSection>
       </SectionOne>
       <SectionTwo>
         <SectionTitle>We Innovate</SectionTitle>
