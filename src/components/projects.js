@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
-import styled from "styled-components"
-import BackgroundImage from "gatsby-background-image"
+import React from "react";
+import { graphql, useStaticQuery, Link } from "gatsby";
+import styled from "styled-components";
+import BackgroundImage from "gatsby-background-image";
 
 const ProjectsWrapper = styled.section`
   margin-top: 5em;
@@ -28,7 +28,7 @@ const ProjectsWrapper = styled.section`
       }
     }
   }
-`
+`;
 const Project = styled(BackgroundImage)`
   background-color: ${({ theme }) => theme.bodyBg};
   height: 600px;
@@ -39,7 +39,7 @@ const Project = styled(BackgroundImage)`
       height: 750px;
     }
   }
-`
+`;
 const ProjectLink = styled(Link)`
   position: relative;
   & {
@@ -121,7 +121,7 @@ const ProjectLink = styled(Link)`
       }
     }
   }
-`
+`;
 
 const ProjectTitle = styled.h4`
   color: ${({ theme }) => theme.text} !important;
@@ -146,7 +146,7 @@ const ProjectTitle = styled.h4`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
-`
+`;
 const Projects = () => {
   const {
     projects: { nodes: projectsList },
@@ -157,8 +157,8 @@ const Projects = () => {
           slug
           title
           type
-          description {
-            description
+          info {
+            info
           }
           projectImage {
             fluid {
@@ -168,7 +168,7 @@ const Projects = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -186,7 +186,7 @@ const Projects = () => {
         )}
       </ProjectsWrapper>
     </>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

@@ -1,8 +1,8 @@
-import React from "react"
-import { useSpring, animated } from "react-spring"
-import styled from "styled-components"
-import Typing from "react-typing-animation"
-import { Spring } from "react-spring/renderprops"
+import React from "react";
+import { useSpring, animated } from "react-spring";
+import styled from "styled-components";
+import Typing from "react-typing-animation";
+// import { Spring } from "react-spring/renderprops"
 
 const HeaderWrapper = styled.div`
   p {
@@ -28,7 +28,7 @@ const HeaderWrapper = styled.div`
       }
     }
   }
-`
+`;
 const HeaderH2 = styled.h2`
   font-size: 7em;
   @media (max-width: 768px) {
@@ -36,7 +36,7 @@ const HeaderH2 = styled.h2`
       font-size: 5em;
     }
   }
-`
+`;
 const AboutWrapper = styled.div`
   p {
     span {
@@ -51,13 +51,13 @@ const AboutWrapper = styled.div`
       color: gray;
     }
   }
-`
+`;
 
 const HeadingSection = () => {
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 },
-  })
+  });
 
   return (
     <HeaderWrapper>
@@ -107,7 +107,7 @@ const HeadingSection = () => {
         {props => <h2 style={props}>Hello</h2>} 
       </Spring>*/}
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default HeadingSection
+export default HeadingSection;

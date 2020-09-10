@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import styled from "styled-components"
+import { graphql, Link } from "gatsby";
+import React from "react";
+import styled from "styled-components";
+import Layout from "../components/layout";
 
 const SectionWrapper = styled.section`
   padding-left: 10%;
@@ -20,7 +20,7 @@ const SectionWrapper = styled.section`
       font-size: 1.26em;
     }
   }
-`
+`;
 
 const HeaderBanner = styled(SectionWrapper)`
   min-height: 400px;
@@ -53,11 +53,11 @@ const HeaderBanner = styled(SectionWrapper)`
       font-size: 1.8em;
     }
   }
-`
+`;
 const Content = styled(SectionWrapper)`
   height: contain;
   background-color: ${({ theme }) => theme.bodyBg};
-`
+`;
 
 const BreadCrumbs = styled.div`
   color: gray;
@@ -79,51 +79,55 @@ const BreadCrumbs = styled.div`
       font-size: 1.3em;
     }
   }
-`
+`;
 
 const ProjectTemplate = ({ data: { project } }) => {
+  const filteredResponse = [];
+
+  if (project.info !== null) {
+    const { content } = project.info;
+
+    const result = content.map(x => {
+      const textImagePlaceHolder = {};
+      if (x.content[0] && x.content[0].value !== "") {
+        textImagePlaceHolder.text = x.content[0].value;
+      }
+      if (x.data.target && x.data.target.fields.file.en_US.url) {
+        textImagePlaceHolder.image = x.data.target.fields.file.en_US.url;
+      }
+
+      return [{ ...textImagePlaceHolder }];
+    });
+
+    filteredResponse.push(
+      ...result.filter(x => x !== undefined && x.length > 0).flat()
+    );
+  }
+
   return (
     <Layout>
       <HeaderBanner>
         <h1>{project.title}</h1>
         <p>{project.type}</p>
-
         <BreadCrumbs>
           <Link to="/">Home</Link> {">"} <Link to="/projects"> Projects </Link>
           {">"} {project.title}
         </BreadCrumbs>
       </HeaderBanner>
       <Content>
-        <p>
-          Etiam rhoncus vitae elit et luctus. Donec ultricies metus ex, vel
-          tempus lectus congue sed. Cras suscipit ligula quis dui sollicitudin,
-          in vehicula diam sollicitudin. Curabitur id lorem eget metus lacinia
-          suscipit. Vestibulum interdum vehicula condimentum. Aliquam a euismod
-          ipsum. Etiam ornare, mi quis porttitor ultricies, eros ipsum luctus
-          leo, vitae interdum nibh sem id sem. Pellentesque vel tellus
-          ultricies, tempor nulla quis, maximus arcu. Ut tempus velit mauris,
-          sed ultricies orci pharetra quis. Nulla sed tortor diam. Aliquam
-          mattis nisi diam, in condimentum velit semper nec. Nam turpis massa,
-          facilisis sed ligula tempus, porta sagittis risus. Cras porttitor nisl
-          convallis lacus feugiat condimentum. Aenean mauris nisi, pharetra quis
-          luctus non, aliquam a eros.
-        </p>
-        <p>
-          Phasellus a consectetur ipsum. Cras aliquam nulla vel orci cursus, ut
-          varius massa iaculis. Integer pulvinar purus felis, quis consectetur
-          tortor varius vitae. Nunc a sodales quam. Nunc sed justo viverra,
-          facilisis massa id, imperdiet nulla. Morbi dui nisi, aliquet in mi in,
-          volutpat condimentum risus. Pellentesque viverra interdum enim.
-          Maecenas sodales posuere porttitor. Quisque malesuada ultricies augue,
-          eget bibendum risus facilisis ac. Quisque metus metus, imperdiet quis
-          vestibulum in, lacinia sit amet enim. Suspendisse sed nisi neque.
-          Etiam iaculis lorem ac libero auctor, sit amet sollicitudin eros
-          iaculis.
-        </p>
+        {filteredResponse.map(({ text, image }) => (
+          <>
+            {text && <p>{text}</p>}
+            {image && <img src={image} alt={project.title} />}
+          </>
+        ))}
+        {filteredResponse.length === 0 && (
+          <p>No content at this. Check back later</p>
+        )}
       </Content>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query GetSingleProject($slug: String) {
@@ -135,15 +139,26 @@ export const query = graphql`
           src
         }
       }
-      description {
+      info {
         content {
           content {
             value
+          }
+          data {
+            target {
+              fields {
+                file {
+                  en_US {
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
-`
+`;
 
-export default ProjectTemplate
+export default ProjectTemplate;
