@@ -122,7 +122,7 @@ const ProjectTemplate = ({ data: { project } }) => {
           </>
         ))}
         {filteredResponse.length === 0 && (
-          <p>No content at this. Check back later</p>
+          <p>No content at this time. Check back later</p>
         )}
       </Content>
     </Layout>
