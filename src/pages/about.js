@@ -65,11 +65,15 @@ const About = () => {
 
   const Space = styled.div`
     padding: 1.5em;
+
+    @media (min-width: 1200px) {
+      padding: 2em;
+    }
   `;
 
   const ServicesSection = styled(SectionWrapper)`
     p {
-      display: inline-block;
+      display: inline-grid;
       width: fit-content;
       width: 100%;
       height: 200px;
@@ -77,7 +81,7 @@ const About = () => {
       border: 1px dashed;
       border-color: ${({ theme }) => theme.text};
       border-left: 10px solid;
-      margin: 10px;
+      margin: 20px 10px;
       transition: 0.4s;
       max-width: 400px;
     }
@@ -91,12 +95,12 @@ const About = () => {
 
     @media (min-width: 1700px) {
       p:nth-child(odd) {
-        ${"" /* transform: translateY(-20px); */}
+         transform: translateY(-10px); 
         background-color: ${({ theme }) => theme.text};
         color: ${({ theme }) => theme.bodyBg};
       }
       p:nth-child(even) {
-        ${"" /* transform: translateY(-10px); */}
+        transform: translateY(20px);}
       }
     }
 
@@ -150,6 +154,10 @@ const About = () => {
     }
   `;
 
+  const CultureSection = styled(SectionWrapper)`
+    background-color: ${({ theme }) => theme.bodyBg};
+  `;
+
   const services = [
     "Website Design and Development",
     "Software Solutions Development",
@@ -170,7 +178,7 @@ const About = () => {
           </HeadingText>
         </HeaderSection>
         <Space></Space>
-        <HistorySection>
+        <HistorySection id="history">
           <SectionTitle style={{ textAlign: "left" }}>History</SectionTitle>
           <Text>
             I'm baby farm-to-table +1 umami, hell of meditation shoreditch
@@ -192,7 +200,7 @@ const About = () => {
             umami man bun tilde fashion axe.
           </Text>
         </HistorySection>
-        <ServicesSection>
+        <ServicesSection id="services">
           <SectionTitle style={{ textAlign: "left" }}>Services</SectionTitle>
           <>
             {services.map(service => (
@@ -209,6 +217,18 @@ const About = () => {
           </Text>
         </CallToAction>
         <Space></Space>
+        <CultureSection id="culture">
+          <SectionTitle style={{ textAlign: "left" }}>Culture</SectionTitle>
+          <Text>
+            Franzen hell of mustache lo-fi banh mi locavore occupy roof party af
+            subway tile +1 sriracha bicycle rights. Whatever keytar 8-bit migas
+            live-edge letterpress. Typewriter hoodie adaptogen microdosing
+            prism. Quinoa poke readymade roof party lo-fi vinyl humblebrag fanny
+            pack lomo bitters literally before they sold out. Organic lomo
+            viral, kitsch hammock hella woke cloud bread farm-to-table kombucha
+            umami man bun tilde fashion axe.
+          </Text>
+        </CultureSection>
       </>
     </Layout>
   );
