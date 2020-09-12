@@ -1,13 +1,13 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React, { useState } from "react"
-import styled from "styled-components"
-import logoImage from "../images/deevcorp-icon.png"
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import styled from "styled-components";
+import logoImage from "../images/deevcorp-icon.png";
 
 const HeaderWrapper = styled.header`
   background: ${({ theme }) => theme.body};
   position: relative;
-`
+`;
 
 const NavBar = styled.nav`
   margin: 0 auto;
@@ -16,11 +16,11 @@ const NavBar = styled.nav`
   display: grid;
   grid-template-columns: 3fr 1fr;
   height: 80px;
-`
+`;
 const Logo = styled.img`
   height: 85px;
   width: auto;
-`
+`;
 
 const NavButton = styled.button.attrs(props => ({
   className: props.className,
@@ -65,9 +65,16 @@ const NavButton = styled.button.attrs(props => ({
     }
   }
 
-`
-const Header = ({ siteTitle }) => {
-  const [isToggled, setToggled] = useState(false)
+`;
+
+const Header = ({ siteTitle, onToggled }) => {
+  const [isToggled, setToggled] = useState(false);
+
+  const handleToggle = () => {
+    onToggled(!isToggled);
+    setToggled(!isToggled);
+  };
+
   return (
     <HeaderWrapper>
       <NavBar>
@@ -76,7 +83,7 @@ const Header = ({ siteTitle }) => {
         </Link>
         <NavButton
           className={isToggled ? "toggled" : null}
-          onClick={() => setToggled(!isToggled)}
+          onClick={handleToggle}
         >
           <span className="top-bar"></span>
           <span className="middle-bar"></span>
@@ -84,15 +91,15 @@ const Header = ({ siteTitle }) => {
         </NavButton>
       </NavBar>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;
