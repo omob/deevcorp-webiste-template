@@ -71,9 +71,12 @@ const About = () => {
     p {
       display: inline-block;
       width: fit-content;
+      width: 100%;
+      height: 200px;
       padding: 1em;
       border: 1px dashed;
       border-color: ${({ theme }) => theme.text};
+      border-left: 10px solid;
       margin: 10px;
       transition: 0.4s;
       max-width: 400px;
@@ -83,16 +86,17 @@ const About = () => {
       transform: translate(-20px);
       background-color: ${({ theme }) => theme.text};
       color: ${({ theme }) => theme.bodyBg};
+      ${"" /* border-left: 1px dashed; */}
     }
 
     @media (min-width: 1700px) {
       p:nth-child(odd) {
-        transform: translateY(-20px);
+        ${"" /* transform: translateY(-20px); */}
         background-color: ${({ theme }) => theme.text};
         color: ${({ theme }) => theme.bodyBg};
       }
       p:nth-child(even) {
-        transform: translateY(30px);
+        ${"" /* transform: translateY(-10px); */}
       }
     }
 
@@ -103,11 +107,55 @@ const About = () => {
     }
   `;
 
+  const CallToAction = styled(SectionWrapper)`
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+    background-color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.body};
+    padding: 40px;
+    text-align: center;
+
+    p {
+      font-size: 1.5em;
+      line-height: 1.2em;
+      font-weight: normal;
+    }
+
+    @media (max-width: 550px) {
+      & {
+        p {
+          line-height: 1.3em;
+          font-size: 25px;
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      & {
+        p {
+          line-height: 1.3em;
+          font-size: 2em;
+        }
+      }
+    }
+
+    @media (min-width: 1200px) {
+      & {
+        p {
+          font-size: 2.5em;
+          line-height: 1.4em;
+        }
+      }
+    }
+  `;
+
   const services = [
     "Website Design and Development",
     "Software Solutions Development",
     "User Interface & User Experience Design ",
     "Mobile Application Development",
+    "Branding",
   ];
 
   return (
@@ -152,6 +200,15 @@ const About = () => {
             ))}
           </>
         </ServicesSection>
+        <Space></Space>
+        <CallToAction>
+          <Text>
+            DeevCorp Digital Agency is focused on helping startups and
+            established brands bring their ideas to life using design and
+            technology.
+          </Text>
+        </CallToAction>
+        <Space></Space>
       </>
     </Layout>
   );
