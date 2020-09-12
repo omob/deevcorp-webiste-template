@@ -1,5 +1,5 @@
 import { graphql, Link } from "gatsby";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Layout from "../components/layout";
 
@@ -82,6 +82,27 @@ const BreadCrumbs = styled.div`
 `;
 
 const ProjectTemplate = ({ data: { project } }) => {
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   const getProducts = () => {
+  //     fetch("https://randomuser.me/api/?results=10")
+  //       .then(res => res.json())
+  //       .then(x => setProducts(x.results))
+  //       .catch(e => console.log(e));
+  //   };
+
+  //   getProducts();
+  //   return () => {};
+  // }, []);
+
+  // const getProducts = () => {
+  //   fetch("https://randomuser.me/api/?results=10")
+  //     .then(res => res.json())
+  //     .then(x => setProducts(x.results))
+  //     .catch(e => console.log(e));
+  // };
+
   const filteredResponse = [];
 
   if (project.info !== null) {
@@ -124,6 +145,13 @@ const ProjectTemplate = ({ data: { project } }) => {
         {filteredResponse.length === 0 && (
           <p>No content at this time. Check back later</p>
         )}
+        {/* 
+        {products.length > 0 &&
+          products.map(({ name, email, cell }) => (
+            <p>
+              {name.first} {name.last} - {email} - {cell}
+            </p>
+          ))} */}
       </Content>
     </Layout>
   );

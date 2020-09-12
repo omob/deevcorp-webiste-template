@@ -1,26 +1,26 @@
-import { Link } from "gatsby"
-import React from "react"
-import styled from "styled-components"
-import videoSrc from "../assets/video/demo.mp4"
-import Layout from "../components/layout"
-import ProjectsWrapper from "../components/projects"
-import SEO from "../components/seo"
+import { Link } from "gatsby";
+import React from "react";
+import styled from "styled-components";
+import videoSrc from "../assets/video/demo.mp4";
+import Layout from "../components/layout";
+import ProjectsWrapper from "../components/projects";
+import SEO from "../components/seo";
 // import playBackButton from "../images/videoBtn.png"
-import Clients from "../components/clients"
+import Clients from "../components/clients";
 
-import HeadingSection from "../components/heading-section"
+import HeadingSection from "../components/heading-section";
 
-const ContainerWrapper = styled.section``
+const ContainerWrapper = styled.section``;
 
-const HeaderTitle = styled.h2`
+export const HeaderTitle = styled.h2`
   font-size: 6em;
   @media (max-width: 768px) {
     & {
       font-size: 5em;
     }
   }
-`
-const SectionWrapper = styled.section`
+`;
+export const SectionWrapper = styled.section`
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 4em;
@@ -29,8 +29,8 @@ const SectionWrapper = styled.section`
   p {
     font-weight: 300;
   }
-`
-const SectionTitle = styled(HeaderTitle)`
+`;
+export const SectionTitle = styled(HeaderTitle)`
   font-size: 4em;
   text-align: center;
 
@@ -39,12 +39,12 @@ const SectionTitle = styled(HeaderTitle)`
       font-size: 3em;
     }
   }
-`
+`;
 
 const SectionOne = styled(SectionWrapper)`
   padding-top: 7em;
   padding-bottom: 5em;
-`
+`;
 
 const SectionTwo = styled(SectionWrapper)`
   background: ${({ theme }) => theme.bgGradient};
@@ -58,7 +58,7 @@ const SectionTwo = styled(SectionWrapper)`
       width: 100%;
     }
   }
-`
+`;
 
 const VideoWrapper = styled.div`
   box-shadow: 2px 2px 10px #2c2c2c;
@@ -73,9 +73,9 @@ const VideoWrapper = styled.div`
     width: 100%;
     height: auto;
   }
-`
+`;
 
-const SectionThree = styled(SectionWrapper)``
+const SectionThree = styled(SectionWrapper)``;
 
 const Button = styled.button`
   margin-top: 1em;
@@ -91,13 +91,13 @@ const Button = styled.button`
   &:focus {
     border: none;
   }
-`
+`;
 
-const PortfolioBtn = styled(Button)``
+const PortfolioBtn = styled(Button)``;
 
 const SectionFour = styled(SectionWrapper)`
   background-color: ${({ theme }) => theme.bodyBg};
-`
+`;
 
 const IndexPage = () => (
   <Layout>
@@ -129,6 +129,6 @@ const IndexPage = () => (
       </SectionFour>
     </ContainerWrapper>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
