@@ -12,7 +12,6 @@ const ToggleButton = styled.button.attrs(props => ({
     z-index: 1000;
     transition: 0.7s;
     outline: 0;
-    ${"" /* justify-self: end; */}
     margin-top: 12px;
     position: fixed;
     top: 39%;
@@ -46,6 +45,13 @@ const ToggleButton = styled.button.attrs(props => ({
       }
       .middle-bar {
         opacity: 0
+      }
+
+      @media (max-width: 550px) {
+        &.toggled {
+          transform: translateX(250px);
+          top: 50%;
+        }
       }
     }
   
