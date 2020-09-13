@@ -5,7 +5,9 @@ import { lightTheme, darkTheme } from "./theme/theme";
 import { GlobalStyles } from "./theme/global";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./header";
-import ToggleButton from "./toggle/toggle-theme";
+import ToggleThemeButton from "./toggle/toggle-theme";
+import ToggleSidebarButton from "./toggle/toggle-sidebar";
+
 import Footer from "./footer";
 import SideNav from "./sidenav";
 
@@ -38,14 +40,17 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header
-          siteTitle={data.site.siteMetadata.title}
-          onToggled={handleMenuBarToggle}
-        />
+        <Header siteTitle={data.site.siteMetadata.title} />
 
-        <SideNav isOpen={isSidebarOpen}></SideNav>
-        <ToggleButton toggleTheme={toggleTheme}></ToggleButton>
-        <main>{children}</main>
+        <>
+          <ToggleSidebarButton
+            onToggled={handleMenuBarToggle}
+            closeButton={!isSidebarOpen}
+          ></ToggleSidebarButton>
+          <SideNav isOpen={isSidebarOpen}></SideNav>
+        </>
+        <ToggleThemeButton toggleTheme={toggleTheme}></ToggleThemeButton>
+        <main onClick={() => setIsSidebarOpen(false)}>{children}</main>
         <Footer siteTitle={data.site.siteMetadata.title}></Footer>
       </>
     </ThemeProvider>

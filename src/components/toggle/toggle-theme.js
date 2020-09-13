@@ -43,7 +43,7 @@ const ToggleContainer = styled.button`
   }
 `;
 
-const ToggleButton = ({ theme, toggleTheme }) => {
+const ToggleThemeButton = ({ theme, toggleTheme }) => {
   return (
     <ToggleContainer onClick={toggleTheme}>
       <img src={moonIcon} alt="dark" />
@@ -52,8 +52,8 @@ const ToggleButton = ({ theme, toggleTheme }) => {
   );
 };
 
-ToggleButton.propTypes = {
+ToggleThemeButton.propTypes = {
   toggleTheme: func.isRequired,
 };
 
-export default ToggleButton;
+export default ToggleThemeButton;
