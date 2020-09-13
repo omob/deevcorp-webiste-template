@@ -1,9 +1,9 @@
-import React from "react"
-import { func } from "prop-types"
-import styled from "styled-components"
+import React from "react";
+import { func } from "prop-types";
+import styled from "styled-components";
 // Import a couple of SVG files we'll use in the design: https://www.flaticon.com
-import moonIcon from "../../images/icons/moon.svg"
-import sunIcon from "../../images/icons/sun.svg"
+import moonIcon from "../../images/icons/moon.svg";
+import sunIcon from "../../images/icons/sun.svg";
 
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
@@ -41,7 +41,7 @@ const ToggleContainer = styled.button`
         theme === "light" ? "translateY(-100px)" : "translateY(0)"};
     }
   }
-`
+`;
 
 const ToggleButton = ({ theme, toggleTheme }) => {
   return (
@@ -49,11 +49,11 @@ const ToggleButton = ({ theme, toggleTheme }) => {
       <img src={moonIcon} alt="dark" />
       <img src={sunIcon} alt="light" />
     </ToggleContainer>
-  )
-}
+  );
+};
 
 ToggleButton.propTypes = {
   toggleTheme: func.isRequired,
-}
+};
 
-export default ToggleButton
+export default ToggleButton;

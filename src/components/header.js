@@ -27,15 +27,17 @@ const NavButton = styled.button.attrs(props => ({
 }))`
   width: 50px;
   height: 45px;
-  background: 0 0;
   border: none;
-  padding-left: 10px;
+  background: transparent;
+  left: 1em;
   z-index: 1000;
   transition: 0.7s;
   outline: 0;
-  justify-self: end;
+  ${"" /* justify-self: end; */}
   margin-top: 12px;
-  position: relative;
+  position: fixed;
+  top: 39%;
+  z-index: 1000;
 
   & > span {
       height: 4px;
@@ -51,7 +53,10 @@ const NavButton = styled.button.attrs(props => ({
   .top-bar, .bottom-bar {
     transition: .1s
   }
+
   &.toggled {
+    transform: translateX(300px);
+  
     .top-bar {
       transform: rotate(45deg);
       transform-origin: -8% 90%;
