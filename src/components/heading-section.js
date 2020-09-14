@@ -2,6 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import Typing from "react-typing-animation";
+import { Spring } from "react-spring/renderprops";
 // import { Spring } from "react-spring/renderprops"
 
 const HeaderWrapper = styled.div`
@@ -74,11 +75,19 @@ const HeadingSection = () => {
         </Typing>
       </HeaderH2>
       <AboutWrapper>
-        <animated.p style={props}>
-          At DeevCorp Digital Agency, we create <span>simple</span>, yet{" "}
-          <span>professional </span> websites and applications using modern
-          design trends and technology.
-        </animated.p>
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: 1 }}
+          config={{ duration: 2000, delay: 2000 }}
+        >
+          {props => (
+            <animated.p style={props}>
+              At DeevCorp Digital Agency, we create <span>simple</span>, yet{" "}
+              <span>professional </span> websites and applications using modern
+              design trends and technology.
+            </animated.p>
+          )}
+        </Spring>
       </AboutWrapper>
 
       {/* <Spring

@@ -50,7 +50,9 @@ const Layout = ({ children }) => {
           <SideNav isOpen={isSidebarOpen}></SideNav>
         </>
         <ToggleThemeButton toggleTheme={toggleTheme}></ToggleThemeButton>
-        <main onClick={() => setIsSidebarOpen(false)}>{children}</main>
+        <main onClick={() => (isSidebarOpen ? setIsSidebarOpen(false) : null)}>
+          {children}
+        </main>
         <Footer siteTitle={data.site.siteMetadata.title}></Footer>
       </>
     </ThemeProvider>

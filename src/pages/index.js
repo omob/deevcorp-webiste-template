@@ -9,7 +9,8 @@ import SEO from "../components/seo";
 import Clients from "../components/clients";
 
 import HeadingSection from "../components/heading-section";
-
+import { animated } from "react-spring";
+import { Spring } from "react-spring/renderprops";
 const ContainerWrapper = styled.section``;
 
 export const HeaderTitle = styled.h2`
@@ -106,23 +107,44 @@ const IndexPage = () => (
       <SectionOne>
         <HeadingSection></HeadingSection>
       </SectionOne>
-      <SectionTwo>
-        <SectionTitle>We Innovate</SectionTitle>
-        <VideoWrapper>
-          <video controls>
-            <source src={videoSrc}></source>
-            <track kind="captions" srcLang="en" />
-          </video>
-          {/* <PlayButton /> */}
-        </VideoWrapper>
-      </SectionTwo>
-      <SectionThree>
-        <SectionTitle>Portfolio</SectionTitle>
-        <ProjectsWrapper></ProjectsWrapper>
-        <Link to="/">
-          <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
-        </Link>
-      </SectionThree>
+      <Spring
+        from={{ opacity: 0, transform: "translateY(250px)" }}
+        to={{ opacity: 1, transform: "tranlateY(0)" }}
+        config={{ duration: 1000, delay: 2000 }}
+      >
+        {props => (
+          <animated.div style={props}>
+            <SectionTwo>
+              <SectionTitle>We Innovate</SectionTitle>
+              <VideoWrapper>
+                <video controls>
+                  <source src={videoSrc}></source>
+                  <track kind="captions" srcLang="en" />
+                </video>
+                {/* <PlayButton /> */}
+              </VideoWrapper>
+            </SectionTwo>
+          </animated.div>
+        )}
+      </Spring>
+
+      <Spring
+        from={{ opacity: 0 }}
+        to={{ opacity: 1 }}
+        config={{ duration: 2000, delay: 5000 }}
+      >
+        {props => (
+          <animated.div style={props}>
+            <SectionThree>
+              <SectionTitle>Portfolio</SectionTitle>
+              <ProjectsWrapper></ProjectsWrapper>
+              <Link to="/">
+                <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
+              </Link>
+            </SectionThree>
+          </animated.div>
+        )}
+      </Spring>
       <SectionFour>
         <SectionTitle>Trusted Clients</SectionTitle>
         <Clients></Clients>
