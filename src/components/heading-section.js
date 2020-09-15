@@ -65,7 +65,7 @@ const HeadingSection = () => {
       <HeaderH2>
         <Typing loop={false} speed={100} startDelay={50}>
           <span>We Design</span>
-          <Typing.Backspace count={20} delay={100} />
+          <Typing.Backspace count={20} delay={100} speed={200} />
           We Build
           <Typing.Backspace count={20} delay={100} />
           Result Oriented

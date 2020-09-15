@@ -54,7 +54,7 @@ const SectionTwo = styled(SectionWrapper)`
 
   @media (max-width: 768px) {
     &,
-    & > div {
+    & div {
       height: fit-content;
       width: 100%;
     }
@@ -107,14 +107,15 @@ const IndexPage = () => (
       <SectionOne>
         <HeadingSection></HeadingSection>
       </SectionOne>
-      <Spring
-        from={{ opacity: 0, transform: "translateY(250px)" }}
-        to={{ opacity: 1, transform: "tranlateY(0)" }}
-        config={{ duration: 1000, delay: 2000 }}
-      >
-        {props => (
-          <animated.div style={props}>
-            <SectionTwo>
+
+      <SectionTwo>
+        <Spring
+          from={{ opacity: 0 }}
+          to={{ opacity: 1 }}
+          config={{ duration: 1000, delay: 2000 }}
+        >
+          {props => (
+            <animated.div style={props}>
               <SectionTitle>We Innovate</SectionTitle>
               <VideoWrapper>
                 <video controls>
@@ -123,15 +124,15 @@ const IndexPage = () => (
                 </video>
                 {/* <PlayButton /> */}
               </VideoWrapper>
-            </SectionTwo>
-          </animated.div>
-        )}
-      </Spring>
+            </animated.div>
+          )}
+        </Spring>
+      </SectionTwo>
 
       <Spring
-        from={{ opacity: 0 }}
-        to={{ opacity: 1 }}
-        config={{ duration: 2000, delay: 5000 }}
+        from={{ opacity: 0, transform: "translateY(250px)" }}
+        to={{ opacity: 1, transform: "tranlateY(0)" }}
+        config={{ duration: 500, delay: 4000 }}
       >
         {props => (
           <animated.div style={props}>
