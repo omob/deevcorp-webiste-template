@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { Logo } from "./header";
 import logoImage from "../images/deevcorp-icon.png";
+import { Trail, animated } from "react-spring/renderprops";
 
 const SideNavWrapper = styled.div`
   width: 300px;
@@ -73,22 +73,38 @@ const LogoBg = styled.div`
   background-size: contain;
 `;
 const SideNav = ({ isOpen }) => {
+  const navlinks = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Projects", url: "/projects" },
+  ];
+
   return (
     <SideNavWrapper isOpen={isOpen}>
       <LogoBg src={logoImage}></LogoBg>
       <NavWrapper>
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/projects">Projects</Link>
-          </li>
+          <Trail
+            native
+            reverse={!isOpen}
+            initial={null}
+            items={navlinks}
+            from={{ opacity: 0, x: -150 }}
+            keys={item => item.url}
+            to={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -150 }}
+          >
+            {(navlink, index) => ({ x, opacity }) => (
+              <animated.li
+                key={index}
+                style={{
+                  opacity,
+                  transform: x.interpolate(x => `translate3d(${x}%,0,0)`),
+                }}
+              >
+                {<Link to={navlink.url}>{navlink.name}</Link>}
+              </animated.li>
+            )}
+          </Trail>
 
           <div id="navSocial">
             <a href="http://facebook.com/deevcorp">
