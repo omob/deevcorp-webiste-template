@@ -1,16 +1,16 @@
 import { Link } from "gatsby";
-import React from "react";
-import styled from "styled-components";
-import videoSrc from "../assets/video/demo.mp4";
-import Layout from "../components/layout";
-import ProjectsWrapper from "../components/projects";
-import SEO from "../components/seo";
-// import playBackButton from "../images/videoBtn.png"
-import Clients from "../components/clients";
-
-import HeadingSection from "../components/heading-section";
+import React, { useRef, useState } from "react";
 import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
+import styled from "styled-components";
+import videoSrc from "../assets/video/demo.mp4";
+import Clients from "../components/clients";
+import HeadingSection from "../components/heading-section";
+import Layout from "../components/layout";
+import PlayButton from "../components/playButton";
+import ProjectsWrapper from "../components/projects";
+import SEO from "../components/seo";
+
 const ContainerWrapper = styled.section``;
 
 export const HeaderTitle = styled.h2`
@@ -63,7 +63,6 @@ const SectionTwo = styled(SectionWrapper)`
 
 const VideoWrapper = styled.div`
   box-shadow: 2px 2px 10px #2c2c2c;
-  width: 80%;
   margin: auto;
   margin-top: 5em;
   max-width: 600px;
@@ -100,58 +99,78 @@ const SectionFour = styled(SectionWrapper)`
   background-color: ${({ theme }) => theme.bodyBg};
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <ContainerWrapper>
-      <SectionOne>
-        <HeadingSection></HeadingSection>
-      </SectionOne>
+const IndexPage = () => {
+  const [showPlayButton, setShowPlayButton] = useState(true);
+  const videoRef = useRef(null);
 
-      <SectionTwo>
+  const handleVideoPlay = () => {
+    videoRef.current.play();
+    videoRef.current.setAttribute("controls", true);
+    setShowPlayButton(false);
+  };
+
+  const handleVideoStatusChange = () => {
+    setShowPlayButton(true);
+    videoRef.current.removeAttribute("controls");
+  };
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <ContainerWrapper>
+        <SectionOne>
+          <HeadingSection></HeadingSection>
+        </SectionOne>
+
+        <SectionTwo>
+          <Spring
+            from={{ opacity: 0 }}
+            to={{ opacity: 1 }}
+            config={{ duration: 1000, delay: 2000 }}
+          >
+            {props => (
+              <animated.div style={props}>
+                <SectionTitle>We Innovate</SectionTitle>
+                <VideoWrapper>
+                  <video
+                    onEnded={handleVideoStatusChange}
+                    onPause={handleVideoStatusChange}
+                    ref={videoRef}
+                  >
+                    <source src={videoSrc}></source>
+                    <track kind="captions" srcLang="en" />
+                  </video>
+                  {showPlayButton && <PlayButton onPress={handleVideoPlay} />}
+                </VideoWrapper>
+              </animated.div>
+            )}
+          </Spring>
+        </SectionTwo>
+
         <Spring
-          from={{ opacity: 0 }}
-          to={{ opacity: 1 }}
-          config={{ duration: 1000, delay: 2000 }}
+          from={{ opacity: 0, transform: "translateY(250px)" }}
+          to={{ opacity: 1, transform: "tranlateY(0)" }}
+          config={{ duration: 500, delay: 4000 }}
         >
           {props => (
             <animated.div style={props}>
-              <SectionTitle>We Innovate</SectionTitle>
-              <VideoWrapper>
-                <video controls>
-                  <source src={videoSrc}></source>
-                  <track kind="captions" srcLang="en" />
-                </video>
-                {/* <PlayButton /> */}
-              </VideoWrapper>
+              <SectionThree>
+                <SectionTitle>Portfolio</SectionTitle>
+                <ProjectsWrapper></ProjectsWrapper>
+                <Link to="/">
+                  <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
+                </Link>
+              </SectionThree>
             </animated.div>
           )}
         </Spring>
-      </SectionTwo>
-
-      <Spring
-        from={{ opacity: 0, transform: "translateY(250px)" }}
-        to={{ opacity: 1, transform: "tranlateY(0)" }}
-        config={{ duration: 500, delay: 4000 }}
-      >
-        {props => (
-          <animated.div style={props}>
-            <SectionThree>
-              <SectionTitle>Portfolio</SectionTitle>
-              <ProjectsWrapper></ProjectsWrapper>
-              <Link to="/">
-                <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
-              </Link>
-            </SectionThree>
-          </animated.div>
-        )}
-      </Spring>
-      <SectionFour>
-        <SectionTitle>Trusted Clients</SectionTitle>
-        <Clients></Clients>
-      </SectionFour>
-    </ContainerWrapper>
-  </Layout>
-);
+        <SectionFour>
+          <SectionTitle>Trusted Clients</SectionTitle>
+          <Clients></Clients>
+        </SectionFour>
+      </ContainerWrapper>
+    </Layout>
+  );
+};
 
 export default IndexPage;
