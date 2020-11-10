@@ -20,7 +20,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
    background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    height: 100vh;
+  height: 100vh;
     transition: all 0.25s linear;
 }
 body {

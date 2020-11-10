@@ -1,11 +1,13 @@
-import React from "react"
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 export const FooterWrapper = styled.footer`
   text-align: center;
   padding: 2em;
   font-family: ;
-`
+  font-size: 18px;
+`;
+
 const SectionWrapper = styled.section`
   padding-left: 10%;
   padding-right: 10%;
@@ -15,7 +17,8 @@ const SectionWrapper = styled.section`
   p {
     font-weight: 300;
   }
-`
+`;
+
 const SectionTitle = styled.h2`
   font-size: 4em;
   text-align: center;
@@ -25,7 +28,7 @@ const SectionTitle = styled.h2`
       font-size: 3em;
     }
   }
-`
+`;
 
 const GetInTouch = styled(SectionWrapper)`
   p {
@@ -55,7 +58,7 @@ const GetInTouch = styled(SectionWrapper)`
       font-size: 1.5em;
     }
   }
-`
+`;
 
 const Footer = ({ siteTitle }) => {
   return (
@@ -77,7 +80,7 @@ const Footer = ({ siteTitle }) => {
         © {new Date().getFullYear()} {siteTitle}.
       </FooterWrapper>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
