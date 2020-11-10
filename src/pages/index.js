@@ -68,10 +68,10 @@ const VideoWrapper = styled.div`
   max-width: 600px;
   height: 300px;
   position: relative;
-
   video {
     width: 100%;
     height: auto;
+    cursor: pointer;
   }
 `;
 

@@ -27,6 +27,7 @@ const PlayButtonWrapper = styled.a`
     top: 45%;
     left: 43%;
     box-shadow: 0px 0px 25px 3px rgb(0 0 0 / 80%);
+    cursor: pointer;
   }
 
   @media (max-width: 550px) {

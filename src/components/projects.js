@@ -8,47 +8,56 @@ const ProjectsWrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
-
+ 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     align-content: center;
-
-    & {
-      section {
-        height: 500px;
-      }
-    }
   }
 
   @media (min-width: 768px) and (max-width: 992px) {
     & {
       gap: 25px;
-      section {
-        height: 600px;
-      }
     }
   }
 `;
+
 const Project = styled(BackgroundImage)`
-  background-color: ${({ theme }) => theme.bodyBg};
-  height: 600px;
+  height: 400px;
   position: relative;
   background-size: cover;
+
+  @media (min-width: 768px) {
+    & {
+      height: 600px;
+    }
+  }
+
   @media (min-width: 1280px) {
     & {
       height: 750px;
     }
   }
 `;
+
 const ProjectLink = styled(Link)`
   position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  ${'' /* background-color: ${({ theme }) => theme.body}; */}
+ 
+
   & {
-    section {
-      transition: 0.3s;
-    }
+    transition: 0.3s;
   }
 
   &:hover {
+     background-color: #000;
+    transform: translateY(-20px);
+
+    section {
+      opacity: 0.6 !important;
+    }
+
     h4 {
       font-size: 30px;
       visibility: visible;
@@ -57,10 +66,6 @@ const ProjectLink = styled(Link)`
       span {
         font-size: 20px;
       }
-    }
-    section {
-      opacity: 0.6 !important;
-      transform: translateY(-20px);
     }
   }
 
@@ -124,13 +129,14 @@ const ProjectLink = styled(Link)`
 `;
 
 const ProjectTitle = styled.h4`
-  color: ${({ theme }) => theme.text} !important;
+  ${'' /* color: ${({ theme }) => theme.text} !important; */}
+  color: #fff;
   font-size: 1px;
   text-transform: capitalize;
   font-weight: 400;
   text-align: center;
   position: absolute;
-  bottom: 30%;
+  bottom: 40%;
   left: 0;
   width: 100%;
   text-decoration: none !important;
@@ -147,6 +153,7 @@ const ProjectTitle = styled.h4`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 `;
+
 const Projects = () => {
   const {
     projects: { nodes: projectsList },
