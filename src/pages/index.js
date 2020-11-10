@@ -1,9 +1,10 @@
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import React, { useRef, useState } from "react";
 import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
 import styled from "styled-components";
 import videoSrc from "../assets/video/demo.mp4";
+import Button from "../components/button";
 import Clients from "../components/clients";
 import HeadingSection from "../components/heading-section";
 import Layout from "../components/layout";
@@ -75,25 +76,9 @@ const VideoWrapper = styled.div`
   }
 `;
 
-const SectionThree = styled(SectionWrapper)``;
-
-const Button = styled.button`
-  margin-top: 1em;
-  width: 120px;
-  padding: 4px 10px;
-  font-size: 14px;
-  text-transform: uppercase;
-  ${({ theme }) => theme.button};
-  border-width: 3px;
-  float: right;
-  transition: 0.3s;
-  outline: none;
-  &:focus {
-    border: none;
-  }
+const SectionThree = styled(SectionWrapper)`
+  text-align: center;
 `;
-
-const PortfolioBtn = styled(Button)``;
 
 const SectionFour = styled(SectionWrapper)`
   background-color: ${({ theme }) => theme.bodyBg};
@@ -157,9 +142,11 @@ const IndexPage = () => {
               <SectionThree>
                 <SectionTitle>Portfolio</SectionTitle>
                 <ProjectsWrapper></ProjectsWrapper>
-                <Link to="/">
-                  <PortfolioBtn>Portfolios</PortfolioBtn>{" "}
-                </Link>
+                <Button
+                  style={{ marginTop: "5em" }}
+                  title="View All"
+                  onClick={() => navigate("/projects")}
+                />
               </SectionThree>
             </animated.div>
           )}

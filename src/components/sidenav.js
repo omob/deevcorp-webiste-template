@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import logoImage from "../images/deevcorp-icon.png";
 import { Trail, animated } from "react-spring/renderprops";
 
@@ -73,6 +73,8 @@ const LogoBg = styled.div`
   background-size: contain;
 `;
 const SideNav = ({ isOpen }) => {
+  const themeContext = useContext(ThemeContext);
+  console.log(themeContext);
   const navlinks = [
     { name: "Home", url: "/" },
     { name: "About", url: "/about" },
@@ -101,7 +103,18 @@ const SideNav = ({ isOpen }) => {
                   transform: x.interpolate(x => `translate3d(${x}%,0,0)`),
                 }}
               >
-                {<Link to={navlink.url}>{navlink.name}</Link>}
+                {
+                  <Link
+                    to={navlink.url}
+                    activeStyle={{
+                      backgroundColor: themeContext.body,
+                      color: themeContext.text,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {navlink.name}
+                  </Link>
+                }
               </animated.li>
             )}
           </Trail>

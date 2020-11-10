@@ -7,7 +7,11 @@ export const lightTheme = {
   gradient: "linear-gradient(#39598A, #79D7ED)",
   bgGradient:
     "linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(248,248,248,1) 50%)",
-  button: {},
+  button: {
+    background: "#fff",
+    "border-color": "#000",
+    color: "#000",
+  },
   bodyBg: "#fff",
   theme: "light",
 }

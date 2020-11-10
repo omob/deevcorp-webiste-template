@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./theme/theme";
-import { GlobalStyles } from "./theme/global";
-import { useStaticQuery, graphql } from "gatsby";
-import Header from "./header";
-import ToggleThemeButton from "./toggle/toggle-theme";
-import ToggleSidebarButton from "./toggle/toggle-sidebar";
-
 import Footer from "./footer";
+import Header from "./header";
 import SideNav from "./sidenav";
+import { GlobalStyles } from "./theme/global";
+import { darkTheme, lightTheme } from "./theme/theme";
+import ToggleSidebarButton from "./toggle/toggle-sidebar";
+import ToggleThemeButton from "./toggle/toggle-theme";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
