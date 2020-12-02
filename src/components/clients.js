@@ -1,7 +1,7 @@
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import React from "react"
-import styled from "styled-components"
+import { graphql, useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
+import React from "react";
+import styled from "styled-components";
 
 const ClientsWrapper = styled.div`
   max-width: 90%;
@@ -14,7 +14,7 @@ const ClientsWrapper = styled.div`
     height: auto;
     width: 100px;
     margin: 0 auto;
-    filter: grayscale(100%);
+    ${"" /* filter: grayscale(100%); */}
   }
 
   @media (min-width: 550px) {
@@ -29,15 +29,21 @@ const ClientsWrapper = styled.div`
   @media (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-`
+`;
 const Client = styled.div`
   padding: 10px 20px;
   width: fit-content;
+
+  img {
+    border-radius: 50%;
+  }
+
   p {
-    font-size: 20px;
     line-height: 1.5em;
     font-weight: 300;
     margin-top: 10px;
+    font-size: 1.5em;
+    text-align: center;
   }
 
   &:hover {
@@ -53,16 +59,13 @@ const Client = styled.div`
       width: content;
       text-align: center;
       justify-items: center;
-      p {
-        font-size: 1.5em;
-      }
     }
   }
 
   @media (min-width: 768px) {
     & {
       p {
-        display: none;
+        ${"" /* display: none; */}
       }
 
       .gatsby-image-wrapper {
@@ -76,11 +79,11 @@ const Client = styled.div`
     & {
       .gatsby-image-wrapper {
         height: auto;
-        width: 200px;
+        ${"" /* width: 200px; */}
       }
     }
   }
-`
+`;
 
 const Clients = () => {
   const {
@@ -99,7 +102,7 @@ const Clients = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <ClientsWrapper>
@@ -110,7 +113,7 @@ const Clients = () => {
         </Client>
       ))}
     </ClientsWrapper>
-  )
-}
+  );
+};
 
-export default Clients
+export default Clients;

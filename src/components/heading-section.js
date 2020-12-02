@@ -32,9 +32,11 @@ const HeaderWrapper = styled.div`
 `;
 const HeaderH2 = styled.h2`
   font-size: 7em;
+  font-weight: 900;
   @media (max-width: 768px) {
     & {
       font-size: 5em;
+      font-weight: bolder;
     }
   }
 `;
