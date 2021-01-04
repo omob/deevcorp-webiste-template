@@ -74,7 +74,6 @@ const LogoBg = styled.div`
 `;
 const SideNav = ({ isOpen }) => {
   const themeContext = useContext(ThemeContext);
-  console.log(themeContext);
   const navlinks = [
     { name: "Home", url: "/" },
     { name: "About", url: "/about" },
