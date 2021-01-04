@@ -7,10 +7,10 @@ module.exports = {
     title: `Deevcorp Digital Agency`,
     description: `A software development and solutions providing company`,
     author: `@omo_b33`,
-    url: `https://wonderful-hoover-933ad1.netlify.app`,
+    url: `https://deevcorp.netlify.app`,
     twitterUsername: "@deevcorp",
     image: "/twitter-card.png",
-    siteUrl: `https://wonderful-hoover-933ad1.netlify.app`,
+    siteUrl: `https://deevcorp.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
