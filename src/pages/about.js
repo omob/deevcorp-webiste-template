@@ -168,7 +168,7 @@ const About = () => {
 
   return (
     <Layout>
-      <SEO title="About" />
+      <SEO title="About" description="About DeevCorp Digital Agency, History, Services and Culture"/>
       <>
         <HeaderSection style={{ marginTop: "4em" }}>
           <HeadingText>

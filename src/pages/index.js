@@ -102,7 +102,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Home" description="Deevcorp Digital Agency adopts cutting edge technology in web, mobile and software development to render distinct services to our clients. "/>
       <ContainerWrapper>
         <SectionOne>
           <HeadingSection></HeadingSection>

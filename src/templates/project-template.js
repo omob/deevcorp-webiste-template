@@ -2,6 +2,7 @@ import { graphql, Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const SectionWrapper = styled.section`
   padding-left: 10%;
@@ -127,6 +128,10 @@ const ProjectTemplate = ({ data: { project } }) => {
 
   return (
     <Layout>
+      <SEO
+        title={project.title}
+      />
+
       <HeaderBanner>
         <h1>{project.title}</h1>
         <p>{project.type}</p>

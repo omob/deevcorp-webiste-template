@@ -5,11 +5,15 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Deevcorp Digital Agency`,
-    description: ``,
-    author: `@deevcorp`,
+    description: `A software development and solutions providing company`,
+    author: `@omo_b33`,
+    url: `https://deevcorp.com`,
+    twitterUsername: "@deevcorp",
+    image: "/twitter-card.png",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -47,4 +51,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
