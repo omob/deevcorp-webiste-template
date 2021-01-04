@@ -11,6 +11,7 @@ import Layout from "../components/layout";
 import PlayButton from "../components/playButton";
 import ProjectsWrapper from "../components/projects";
 import SEO from "../components/seo";
+import team from "../images/team.png";
 
 const ContainerWrapper = styled.section``;
 
@@ -107,7 +108,7 @@ const IndexPage = () => {
           <HeadingSection></HeadingSection>
         </SectionOne>
 
-        <SectionTwo>
+        {/* <SectionTwo>
           <Spring
             from={{ opacity: 0 }}
             to={{ opacity: 1 }}
@@ -130,7 +131,7 @@ const IndexPage = () => {
               </animated.div>
             )}
           </Spring>
-        </SectionTwo>
+        </SectionTwo> */}
 
         <Spring
           from={{ opacity: 0, transform: "translateY(250px)" }}

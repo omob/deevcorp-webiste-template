@@ -9,6 +9,9 @@ import { GlobalStyles } from "./theme/global";
 import { darkTheme, lightTheme } from "./theme/theme";
 import ToggleSidebarButton from "./toggle/toggle-sidebar";
 import ToggleThemeButton from "./toggle/toggle-theme";
+import storage from "./storage-layer";
+import { useEffect } from "react";
+import uiTheme from "./theme/uiTheme";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,14 +24,27 @@ const Layout = ({ children }) => {
     }
   `);
 
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const loadTheme = () => {
+    const storedTheme = storage.getTheme();
+    if(!storedTheme) return setTheme(uiTheme.DARK);
+
+    setTheme(storedTheme);
+  }
+
+  useEffect(() => {
+    loadTheme();
+  }, [])
+
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
+    if (theme === uiTheme.LIGHT) {
+      setTheme(uiTheme.DARK);
+      storage.save(uiTheme.DARK)
     } else {
-      setTheme("light");
+      setTheme(uiTheme.LIGHT);
+      storage.save(uiTheme.LIGHT);
     }
   };
 
@@ -36,7 +52,7 @@ const Layout = ({ children }) => {
     setIsSidebarOpen(isToggled);
   };
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === uiTheme.LIGHT ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Header siteTitle={data.site.siteMetadata.title} />
