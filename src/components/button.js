@@ -18,10 +18,10 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-const Button = ({ title, onClick, style }) => {
+const Button = ({ title, onClick, style, type="button", children}) => {
   return (
-    <ButtonWrapper onClick={onClick} style={style}>
-      {title}
+    <ButtonWrapper type={type} onClick={onClick} style={style}>
+      {title || children}
     </ButtonWrapper>
   );
 };

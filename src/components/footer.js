@@ -1,5 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./button";
+import ContactForm from "./contactForm";
+import sendMessageSvg from "../images/icons/send-message.svg";
+import { useState } from "react";
+import { animated } from "react-spring";
+import { Spring } from "react-spring/renderprops";
 
 export const FooterWrapper = styled.footer`
   text-align: center;
@@ -60,7 +66,44 @@ const GetInTouch = styled(SectionWrapper)`
   }
 `;
 
+const buttonStyle = {
+  backgroundColor: "#fff",
+  padding: "5px",
+  width: "50px",
+  height: "50px",
+  borderRadius: "50px",
+  borderWidth: "0px",
+  boxShadow: "rgb(255 255 255) 1px 1px 3px 2px",
+  alignitems: "center",
+  display: "flex",
+  flexDirection: "column-reverse",
+  position: "absolute",
+  right: "10%",
+};
+
+const ContactFormModal = styled.div`
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: ${({ theme }) => theme.bodyBg};
+  transition: 0.5s;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const Footer = ({ siteTitle }) => {
+
+  const [showContactForm, setShowContactForm] = useState(false);
+
+  const handleModalClose = () => {
+
+  }
+
+  const AnimatedContactFormModal = animated(ContactFormModal);
+
   return (
     <>
       <GetInTouch>
@@ -75,12 +118,39 @@ const Footer = ({ siteTitle }) => {
             <a href="tel:+2348153706096"> +234(0)8153706097</a>
           </span>
         </p>
+
+        <Button style={buttonStyle} onClick={() => setShowContactForm(true)}>
+          <img
+            style={{ margin: 0 }}
+            height={35}
+            width={40}
+            src={sendMessageSvg}
+            alt="Send Message"
+          ></img>
+        </Button>
       </GetInTouch>
+
+      {showContactForm && (
+        <Spring
+          from={{ opacity: 0, height: 0 }}
+          to={{ opacity: 1, height: window.innerHeight }}
+          config={{ duration: 300 }}
+        >
+          {props => (
+            <AnimatedContactFormModal style={props}>
+              <Button title="X" style={{fontWeight: "bolder"}} onClick={() => setShowContactForm(false)} />
+              <ContactForm></ContactForm>
+            </AnimatedContactFormModal>
+          )}
+        </Spring>
+      )}
+
       <FooterWrapper>
         © {new Date().getFullYear()} {siteTitle}.
       </FooterWrapper>
     </>
   );
 };
+
 
 export default Footer;
