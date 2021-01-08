@@ -36,19 +36,34 @@ const FormWrapper = styled.div`
 function ContactForm(props) {
     return (
       <FormWrapper>
-        <form name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact" />
+        <form name="Contact Form" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="Contact Form" />
           <p>
-            <input className="form-control" type="text" name="name" placeholder="Your Name"/>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+            />
           </p>
           <p>
-            <input className="form-control" type="email" name="email" placeholder="Your Email"/>
+            <input
+              className="form-control"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+            />
           </p>
           <p>
-            <textarea rows="5" className="form-control" name="message" placeholder="Enter Message"></textarea>
+            <textarea
+              rows="5"
+              className="form-control"
+              name="message"
+              placeholder="Enter Message"
+            ></textarea>
           </p>
-          <p style={{textAlign: "right"}}>
-            <Button style={{width: "150px"}} title="Send" type="submit" />
+          <p style={{ textAlign: "right" }}>
+            <Button style={{ width: "150px" }} title="Send" type="submit" />
           </p>
         </form>
       </FormWrapper>
