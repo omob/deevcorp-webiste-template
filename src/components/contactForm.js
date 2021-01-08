@@ -36,7 +36,12 @@ const FormWrapper = styled.div`
 function ContactForm(props) {
     return (
       <FormWrapper>
-        <form name="Contact Form" method="POST" data-netlify="true">
+        <form
+          name="Contact Form"
+          method="POST"
+          data-netlify="true"
+          action="/thank-you"
+        >
           <input type="hidden" name="form-name" value="Contact Form" />
           <p>
             <input
