@@ -39,6 +39,7 @@ function ContactForm(props) {
         <form
           name="contact"
           data-netlify="true"
+          data-netlify-recaptcha="true"
           method="post"
           action="/thank-you"
         >
@@ -67,6 +68,7 @@ function ContactForm(props) {
               placeholder="Enter Message"
             ></textarea>
           </p>
+          <div data-netlify-recaptcha="true"></div>
           <p style={{ textAlign: "right" }}>
             <Button style={{ width: "150px" }} title="Send" type="submit" />
           </p>
