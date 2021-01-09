@@ -85,6 +85,7 @@ const ContactFormModal = styled.div`
   position: fixed;
   width: 100%;
   bottom: 0;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.bodyBg};
   transition: 0.5s;
   margin: auto;
@@ -130,20 +131,28 @@ const Footer = ({ siteTitle }) => {
         </Button>
       </GetInTouch>
 
-      {showContactForm && (
-        <Spring
-          from={{ opacity: 0, height: 0 }}
-          to={{ opacity: 1, height: window.innerHeight }}
-          config={{ duration: 300 }}
-        >
-          {props => (
-            <AnimatedContactFormModal style={props}>
-              <Button title="X" style={{fontWeight: "bolder"}} onClick={() => setShowContactForm(false)} />
-              <ContactForm></ContactForm>
-            </AnimatedContactFormModal>
-          )}
-        </Spring>
-      )}
+      {/* {showContactForm && ( */}
+      <Spring
+        from={{ opacity: 0, height: 0,  }}
+        to={
+          showContactForm
+            ? { opacity: 1, height: window.innerHeight }
+            : { opacity: 0, height: 0 }
+        }
+        config={{ duration: 300 }}
+      >
+        {props => (
+          <AnimatedContactFormModal style={props}>
+            <Button
+              title="X"
+              style={{ fontWeight: "bolder" }}
+              onClick={() => setShowContactForm(false)}
+            />
+            <ContactForm></ContactForm>
+          </AnimatedContactFormModal>
+        )}
+      </Spring>
+      {/* )} */}
 
       <FooterWrapper>
         © {new Date().getFullYear()} {siteTitle}.

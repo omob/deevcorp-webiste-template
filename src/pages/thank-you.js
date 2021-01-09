@@ -4,21 +4,28 @@ import styled from 'styled-components';
 import Layout from "../components/layout";
 
 
-const Container = styled.div`
-  margin: auto;
-  margin-top: 100px;
-  padding: 20px;
-  padding-top: 10%;
-  width: 100%;
-  top: 0;
-  text-align: center;
-  position: fixed;
-  background-color: ${({ theme }) => theme.bodyBg};
-  z-index: 10;
-  height: 100%;
+const ContainerWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    div {
+        background-color: ${({ theme }) => theme.bodyBg};
+        padding: 40px 30px;
+        text-align: center;
+        border-radius: 20px;
+        margin: 5%;
+    }
+  background-color: ${({ theme }) => theme.body};
 
   p {
-    font-size: 2em;
+    font-size: 1.4em;
     line-height: 1em;
   }
 
@@ -43,15 +50,18 @@ const Container = styled.div`
 function ThanYouPage(props) {
     return (
       <Layout>
-        <Container>
-          <h1>Contact</h1>
-          <p>Thank you for your submission!</p>
+        <ContainerWrapper>
+         <div>
+            <h1>Thank you!</h1>
+            <p>Your form submission has been received.</p>
 
-          <Link to="/">
-            {" "}
-            <span>Go Back</span>{" "}
-          </Link>
-        </Container>
+            <Link to="/">
+                {" "}
+                <span>← Back to home page</span>{" "}
+            </Link>
+
+         </div>
+        </ContainerWrapper>
       </Layout>
     );
 }

@@ -37,12 +37,12 @@ function ContactForm(props) {
     return (
       <FormWrapper>
         <form
-          name="Contact Form"
-          method="POST"
+          name="contact"
           data-netlify="true"
+          method="post"
           action="/thank-you"
         >
-          <input type="hidden" name="form-name" value="Contact Form" />
+          <input type="hidden" name="form-name" value="contact" />
           <p>
             <input
               className="form-control"
