@@ -40,8 +40,7 @@ function ContactForm(props) {
           name="contact"
           method="post"
           data-netlify="true"
-          netflify
-          action="/thank-you"
+          data-netflify-honeypot="bot-field"
         >
           <input type="hidden" name="form-name" value="contact" />
           <p>
