@@ -38,7 +38,8 @@ function ContactForm(props) {
       <FormWrapper>
         <form
           name="contact"
-          netlify
+          data-netflify="true"
+          method="post"
         >
           <input type="hidden" name="form-name" value="contact" />
           <p>
