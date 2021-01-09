@@ -15,6 +15,11 @@ const FormWrapper = styled.div`
       max-width: 800px;
     }
 
+    p.hidden {
+      visibility: hidden;
+      margin: 0
+    }
+
     input.form-control,
     textarea.form-control {
       border-radius: 10px;
@@ -39,16 +44,19 @@ function ContactForm(props) {
         <form
           name="contact"
           data-netlify="true"
+          netlify-honeypot="bot-field"
           method="post"
           action="/thank-you"
         >
           <input type="hidden" name="form-name" value="contact" />
+
           <p>
             <input
               className="form-control"
               type="text"
               name="name"
               placeholder="Your Name"
+              required
             />
           </p>
           <p>
@@ -57,6 +65,7 @@ function ContactForm(props) {
               type="email"
               name="email"
               placeholder="Your Email"
+              required
             />
           </p>
           <p>
@@ -65,7 +74,14 @@ function ContactForm(props) {
               className="form-control"
               name="message"
               placeholder="Enter Message"
+              required
+              minLength={10}
             ></textarea>
+          </p>
+          <p class="hidden">
+            <label>
+              Don’t fill this out if you’re human: <input name="bot-field" />
+            </label>
           </p>
           <p style={{ textAlign: "right" }}>
             <Button style={{ width: "150px" }} title="Send" type="submit" />
