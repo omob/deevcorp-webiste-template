@@ -1,40 +1,36 @@
-import { Link } from 'gatsby';
+import { Link,  } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
 import React from 'react';
 import styled from 'styled-components';
+import Img from "gatsby-image";
 
-
-
-
-const ProjectImage = styled(BackgroundImage)`
-  height: 400px;
-  position: relative;
-  background-size: cover;
-
-  @media (min-width: 768px) {
-    & {
-      height: 600px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    & {
-      height: 750px;
-    }
-  }
+const ProjectImage = styled.div`
+  margin-top: 2em;
 `;
 
 const ProjectLink = styled(Link)`
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
-  ${"" /* background-color: ${({ theme }) => theme.body}; */}
+  display: block;
+  height: fit-content;
+  padding: 20px;
+  background-color: ${({ theme }) => theme.bodyBg};
+  text-decoration: none !important;
 
-  & {
-    transition: 0.3s;
+  ${'' /* & {
+    .gatsby-image-wrapper img {
+      transition: 0.3s;
+    }
   }
 
   &:hover {
+    .gatsby-image-wrapper img {
+      transform: scale(1.2);
+    }
+  } */}
+
+  ${
+    "" /* &:hover {
     background-color: #000;
     transform: translateY(-20px);
 
@@ -51,9 +47,29 @@ const ProjectLink = styled(Link)`
         font-size: 20px;
       }
     }
+  } */
   }
 
-  @media (max-width: 550px) {
+  @media (min-width: 768px) {
+    & {
+      height: 500px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    & {
+      height: 600px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    & {
+      height: 650px;
+    }
+  }
+
+  ${
+    "" /* @media (max-width: 550px) {
     & {
       h4 {
         visibility: visible;
@@ -109,29 +125,26 @@ const ProjectLink = styled(Link)`
         }
       }
     }
+  } */
   }
 `;
 
 const ProjectTitle = styled.h4`
-  ${"" /* color: ${({ theme }) => theme.text} !important; */}
-  color: #fff;
-  font-size: 1px;
+  color: ${({ theme }) => theme.text} !important;
   text-transform: capitalize;
   font-weight: 400;
-  text-align: center;
-  position: absolute;
-  bottom: 40%;
-  left: 0;
-  width: 100%;
-  text-decoration: none !important;
-  transition: 0.3s;
-  visibility: hidden;
-
+  text-align: left;
+  font-size: 26px;
+  ${'' /* text-transform: uppercase; */}
+  margin: 20px;
+  font-family: "Montserrat";
+  font-weight: 600;
+  
   span {
-    font-weight: 300;
+    font-weight: 100;
     letter-spacing: 4px;
     display: block;
-    font-size: 1px;
+    font-size: 10px;
     margin-top: 10px;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -142,11 +155,17 @@ const ProjectTitle = styled.h4`
 function Project({slug, image, title, type}) {
     return (
       <ProjectLink to={"projects/" + slug} key={slug}>
-        <ProjectImage Tag="section" fluid={image}></ProjectImage>
         <ProjectTitle>
           {title}
           <span>{type}</span>
         </ProjectTitle>
+        <ProjectImage>
+          <Img
+            fluid={image}
+            alt={title}
+            fadeIn={true}
+          />
+        </ProjectImage>
       </ProjectLink>
     );
 }

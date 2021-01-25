@@ -5,11 +5,13 @@ import BackgroundImage from "gatsby-background-image";
 import Project from "./project";
 
 const ProjectsWrapper = styled.section`
-  margin-top: 5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
- 
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 5em;
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     align-content: center;
@@ -38,7 +40,7 @@ const Projects = () => {
             info
           }
           projectImage {
-            fluid {
+            fluid(quality: 100) {
               ...GatsbyContentfulFluid
             }
           }
