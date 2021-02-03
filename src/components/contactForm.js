@@ -78,7 +78,7 @@ function ContactForm(props) {
               minLength={10}
             ></textarea>
           </p>
-          <p class="hidden">
+          <p className="hidden">
             <label>
               Don’t fill this out if you’re human: <input name="bot-field" />
             </label>
