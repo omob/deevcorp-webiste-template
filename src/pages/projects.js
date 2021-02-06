@@ -121,7 +121,6 @@ const Projects = () => {
      }
    `);
 
-   console.log(projectsList)
   return (
     <Layout>
       <SEO title="Projects" />
