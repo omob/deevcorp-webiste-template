@@ -1,9 +1,8 @@
 import React from "react";
-import { useSpring, animated } from "react-spring";
-import styled from "styled-components";
-import Typing from "react-typing-animation";
+import { animated, useSpring } from "react-spring";
 import { Spring } from "react-spring/renderprops";
-// import { Spring } from "react-spring/renderprops"
+import Typing from "react-typing-animation";
+import styled from "styled-components";
 
 const HeaderWrapper = styled.div`
   p {
@@ -65,14 +64,13 @@ const HeadingSection = () => {
   return (
     <HeaderWrapper>
       <HeaderH2>
-        <Typing loop={false} speed={100} startDelay={50}>
+        <Typing loop={false}  startDelay={50}>
           <span>We Design</span>
-          <Typing.Backspace count={20} delay={100} speed={200} />
+          <Typing.Backspace count={20}  delay={2000} />
           We Build
-          <Typing.Backspace count={20} delay={100} />
+          <Typing.Backspace count={20} delay={2000} />
           Result Oriented
           <Typing.Backspace count={20} delay={1000} />
-          {/* <Typing.Reset count={1} delay={500} /> */}
           <span>We Design</span>
         </Typing>
       </HeaderH2>
@@ -80,7 +78,7 @@ const HeadingSection = () => {
         <Spring
           from={{ opacity: 0 }}
           to={{ opacity: 1 }}
-          config={{ duration: 2000, delay: 2000 }}
+          config={{ duration: 2000, delay: 1000 }}
         >
           {props => (
             <animated.p style={props}>
@@ -91,32 +89,6 @@ const HeadingSection = () => {
           )}
         </Spring>
       </AboutWrapper>
-
-      {/* <Spring
-        from={{
-          width: 100,
-          padding: 0,
-          background: "linear-gradient(to right, #30e8bf, #ff8235)",
-          transform: "translate3d(400px,0,0) scale(2) rotateX(90deg)",
-          boxShadow: "0px 100px 150px -10px #2D3747",
-          borderBottom: "0px solid white",
-          shape: "M20,380 L380,380 L380,380 L200,20 L20,380 Z",
-          textShadow: "0px 5px 0px white",
-          transitionDuration: "3s",
-        }}
-        to={{
-          width: "auto",
-          padding: 20,
-          background: "linear-gradient(to right, #009fff, #ec2f4b)",
-          transform: "translate3d(0px,0,0) scale(1) rotateX(0deg)",
-          boxShadow: "0px 10px 20px 0px rgba(0,0,0,0.4)",
-          borderBottom: "10px solid #2D3747",
-          shape: "M20,20 L20,380 L380,380 L380,20 L20,20 Z",
-          textShadow: "0px 5px 15px rgba(255,255,255,0.5)",
-        }}
-      >
-        {props => <h2 style={props}>Hello</h2>} 
-      </Spring>*/}
     </HeaderWrapper>
   );
 };
