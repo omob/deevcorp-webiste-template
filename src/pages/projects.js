@@ -132,7 +132,7 @@ const Projects = () => {
   const filters = [
     {
       id: 1,
-      type: "all",
+      type: "all"
     },
     {
       id: 2,
@@ -145,11 +145,7 @@ const Projects = () => {
     {
       id: 4,
       type: "ui / ux",
-    },
-    {
-      id: 5,
-      type: "ui / ux",
-    },
+    }
   ];
 
   const handleFilter = (projectType) => {
