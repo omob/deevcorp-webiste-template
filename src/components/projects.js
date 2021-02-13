@@ -58,7 +58,7 @@ const Projects = () => {
       <ProjectsWrapper>
         {projectsList.map(
           ({ title, slug, type, projectImage: { fluid: image } }) => (
-           <Project image={image} title={title} slug={slug} type={type} />
+           <Project key={title} image={image} title={title} slug={slug} type={type} />
           )
         )}
       </ProjectsWrapper>
