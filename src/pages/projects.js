@@ -1,9 +1,10 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Masonry } from "masonic";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SectionWrapper } from ".";
+import Button from "../components/button";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
@@ -79,6 +80,35 @@ import SEO from "../components/seo";
     }
   `;
 
+  const FilterWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3em 0 ;
+
+    button {
+      font-size: 10px;
+      padding: 2px 10px;
+      border-width: 2px;
+      margin: 0px 2px;
+    }
+
+    @media (min-width: 550px) {
+      button {
+        font-size: 12px;
+        padding: 2px 14px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      button {
+        font-size: 12px;
+        padding: 2px 20px;
+        margin: 0px 10px;
+      }
+    }
+  `;
+
 const MasonryCard = ({
   index,
   data: {
@@ -121,6 +151,43 @@ const Projects = () => {
      }
    `);
 
+  const [projects, setProjects] = useState(projectsList);
+  const [filteredProjects, setFilteredProjects] = useState(projectsList)
+
+  const [key, setKey] = useState();
+
+  const filters = [
+    {
+      id: 1,
+      name: "all"
+    },
+    {
+      id: 2,
+      name: "web design",
+    },
+    {
+      id: 3,
+      name: "web app",
+    },
+    {
+      id: 4,
+      name: "ui/ux",
+    },
+  ];
+
+  const handleFilter = (projectType) => {
+    if(projectType.toLowerCase() === "all") {
+      return setFilteredProjects(projects);
+    }
+    
+    setFilteredProjects(
+      projects.filter(
+        ({ type }) => type.toLowerCase() == projectType.toLowerCase()
+      )
+    );
+    setKey(projectType);
+  };
+
   return (
     <Layout>
       <SEO title="Projects" />
@@ -130,9 +197,21 @@ const Projects = () => {
           <span>Application </span> Development to <span>UI/UX</span>
         </HeadingText>
       </HeadingSection>
+
       <PortfolioWrapper>
+        <FilterWrapper>
+          {filters.map(({id, name}) => (
+            <Button
+             key={id}
+              onClick={() => handleFilter(name)}
+            >
+             {name }
+            </Button>
+          ))}
+        </FilterWrapper>
         <Masonry
-          items={projectsList}
+          key={key}
+          items={filteredProjects}
           columnGutter={10}
           overscanBy={1}
           columnWidth={320}
