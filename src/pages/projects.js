@@ -4,13 +4,14 @@ import { Masonry } from "masonic";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { SectionWrapper } from ".";
-import Button from "../components/button";
 import Layout from "../components/layout";
+import ProjectsFilter from "../components/projects-filter";
 import SEO from "../components/seo";
 
 
   const HeadingSection = styled(SectionWrapper)`
     padding-top: 1em;
+    margin-top: 4em;
   `;
 
   const HeadingText = styled.h2`
@@ -80,35 +81,6 @@ import SEO from "../components/seo";
     }
   `;
 
-  const FilterWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3em 0 ;
-
-    button {
-      font-size: 10px;
-      padding: 2px 10px;
-      border-width: 2px;
-      margin: 0px 2px;
-    }
-
-    @media (min-width: 550px) {
-      button {
-        font-size: 12px;
-        padding: 2px 14px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      button {
-        font-size: 12px;
-        padding: 2px 20px;
-        margin: 0px 10px;
-      }
-    }
-  `;
-
 const MasonryCard = ({
   index,
   data: {
@@ -116,8 +88,7 @@ const MasonryCard = ({
     slug,
     type,
     projectImage: { fluid: image },
-  },
-  width,
+  }
 }) => (
   <Project key={index}>
     <Link to={`${slug}`}>
@@ -129,57 +100,65 @@ const MasonryCard = ({
 );
 
 const Projects = () => {
+
+  const query = graphql`
+    query PortfoliosQuery {
+      projects: allContentfulProjects {
+        nodes {
+          slug
+          title
+          type
+          info {
+            info
+          }
+          projectImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
+  `;
+
    const {
      projects: { nodes: projectsList },
-   } = useStaticQuery(graphql`
-     query PortfoliosQuery {
-       projects: allContentfulProjects {
-         nodes {
-           slug
-           title
-           type
-           info {
-             info
-           }
-           projectImage {
-             fluid {
-               ...GatsbyContentfulFluid
-             }
-           }
-         }
-       }
-     }
-   `);
+   } = useStaticQuery(query);
 
   const [projects, setProjects] = useState(projectsList);
   const [filteredProjects, setFilteredProjects] = useState(projectsList)
-
-  const [key, setKey] = useState();
+  const [key, setKey] = useState("all");
 
   const filters = [
     {
       id: 1,
-      name: "all"
+      type: "all",
     },
     {
       id: 2,
-      name: "web design",
+      type: "web design",
     },
     {
       id: 3,
-      name: "web app",
+      type: "web app",
     },
     {
       id: 4,
-      name: "ui/ux",
+      type: "ui / ux",
+    },
+    {
+      id: 5,
+      type: "ui / ux",
     },
   ];
 
   const handleFilter = (projectType) => {
     if(projectType.toLowerCase() === "all") {
-      return setFilteredProjects(projects);
+      setKey(projectType);
+      setFilteredProjects(projects);
+      return;
     }
-    
+
     setFilteredProjects(
       projects.filter(
         ({ type }) => type.toLowerCase() == projectType.toLowerCase()
@@ -191,7 +170,7 @@ const Projects = () => {
   return (
     <Layout>
       <SEO title="Projects" />
-      <HeadingSection style={{ marginTop: "4em" }}>
+      <HeadingSection>
         <HeadingText>
           Our Portfolio range from <span>Web Design</span> to{" "}
           <span>Application </span> Development to <span>UI/UX</span>
@@ -199,16 +178,7 @@ const Projects = () => {
       </HeadingSection>
 
       <PortfolioWrapper>
-        <FilterWrapper>
-          {filters.map(({id, name}) => (
-            <Button
-             key={id}
-              onClick={() => handleFilter(name)}
-            >
-             {name }
-            </Button>
-          ))}
-        </FilterWrapper>
+        <ProjectsFilter items={filters} onFilter={handleFilter} selected={key} />
         <Masonry
           key={key}
           items={filteredProjects}
