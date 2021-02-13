@@ -1,7 +1,6 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
 import styled from "styled-components";
-import BackgroundImage from "gatsby-background-image";
 import Project from "./project";
 
 const ProjectsWrapper = styled.section`
@@ -26,12 +25,17 @@ const ProjectsWrapper = styled.section`
 
 
 
+;
+
 const Projects = () => {
   const {
     projects: { nodes: projectsList },
   } = useStaticQuery(graphql`
     query ProjectsQuery {
-      projects: allContentfulProjects {
+      projects: allContentfulProjects(
+        limit: 4
+        filter: { slug: { ne: "sanabliss-global" } }
+      ) {
         nodes {
           slug
           title
@@ -54,7 +58,7 @@ const Projects = () => {
       <ProjectsWrapper>
         {projectsList.map(
           ({ title, slug, type, projectImage: { fluid: image } }) => (
-           <Project image={image} title={title} slug={slug} type={type} />
+           <Project key={title} image={image} title={title} slug={slug} type={type} />
           )
         )}
       </ProjectsWrapper>

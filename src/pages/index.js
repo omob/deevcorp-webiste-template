@@ -102,7 +102,10 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <SEO title="Home" description="Deevcorp Digital Agency adopts cutting edge technology in web, mobile and software development to render distinct services to our clients. "/>
+      <SEO
+        title="Home"
+        description="Deevcorp Digital Agency adopts cutting edge technology in web, mobile and software development to render distinct services to our clients. "
+      />
       <ContainerWrapper>
         <SectionOne>
           <HeadingSection></HeadingSection>
@@ -132,26 +135,25 @@ const IndexPage = () => {
             )}
           </Spring>
         </SectionTwo> */}
-
-        <Spring
-          from={{ opacity: 0, transform: "translateY(250px)" }}
-          to={{ opacity: 1, transform: "tranlateY(0)" }}
-          config={{ duration: 500, delay: 4000 }}
-        >
-          {props => (
-            <animated.div style={props}>
-              <SectionThree>
-                <SectionTitle>Portfolio</SectionTitle>
+        <SectionThree>
+          <SectionTitle>Portfolio</SectionTitle>
+          <Spring
+            from={{ opacity: 0, transform: "translateY(250px)" }}
+            to={{ opacity: 1, transform: "tranlateY(0)" }}
+            config={{ duration: 1000, delay: 2000 }}
+          >
+            {props => (
+              <animated.div style={props}>
                 <ProjectsWrapper></ProjectsWrapper>
                 <Button
                   style={{ marginTop: "5em" }}
                   title="View All"
                   onClick={() => navigate("/projects")}
                 />
-              </SectionThree>
-            </animated.div>
-          )}
-        </Spring>
+              </animated.div>
+            )}
+          </Spring>
+        </SectionThree>
         <SectionFour>
           <SectionTitle>Trusted Clients</SectionTitle>
           <Clients></Clients>

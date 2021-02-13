@@ -1,15 +1,17 @@
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Masonry } from "masonic";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SectionWrapper } from ".";
 import Layout from "../components/layout";
+import ProjectsFilter from "../components/projects-filter";
 import SEO from "../components/seo";
 
 
   const HeadingSection = styled(SectionWrapper)`
     padding-top: 1em;
+    margin-top: 4em;
   `;
 
   const HeadingText = styled.h2`
@@ -86,8 +88,7 @@ const MasonryCard = ({
     slug,
     type,
     projectImage: { fluid: image },
-  },
-  width,
+  }
 }) => (
   <Project key={index}>
     <Link to={`${slug}`}>
@@ -99,41 +100,84 @@ const MasonryCard = ({
 );
 
 const Projects = () => {
+
+  const query = graphql`
+    query PortfoliosQuery {
+      projects: allContentfulProjects {
+        nodes {
+          slug
+          title
+          type
+          info {
+            info
+          }
+          projectImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
+  `;
+
    const {
      projects: { nodes: projectsList },
-   } = useStaticQuery(graphql`
-     query PortfoliosQuery {
-       projects: allContentfulProjects {
-         nodes {
-           slug
-           title
-           type
-           info {
-             info
-           }
-           projectImage {
-             fluid {
-               ...GatsbyContentfulFluid
-             }
-           }
-         }
-       }
-     }
-   `);
+   } = useStaticQuery(query);
 
-   console.log(projectsList)
+  const [projects, setProjects] = useState(projectsList);
+  const [filteredProjects, setFilteredProjects] = useState(projectsList)
+  const [key, setKey] = useState("all");
+
+  const filters = [
+    {
+      id: 1,
+      type: "all"
+    },
+    {
+      id: 2,
+      type: "web design",
+    },
+    {
+      id: 3,
+      type: "web app",
+    },
+    {
+      id: 4,
+      type: "ui / ux",
+    }
+  ];
+
+  const handleFilter = (projectType) => {
+    if(projectType.toLowerCase() === "all") {
+      setKey(projectType);
+      setFilteredProjects(projects);
+      return;
+    }
+
+    setFilteredProjects(
+      projects.filter(
+        ({ type }) => type.toLowerCase() == projectType.toLowerCase()
+      )
+    );
+    setKey(projectType);
+  };
+
   return (
     <Layout>
       <SEO title="Projects" />
-      <HeadingSection style={{ marginTop: "4em" }}>
+      <HeadingSection>
         <HeadingText>
           Our Portfolio range from <span>Web Design</span> to{" "}
           <span>Application </span> Development to <span>UI/UX</span>
         </HeadingText>
       </HeadingSection>
+
       <PortfolioWrapper>
+        <ProjectsFilter items={filters} onFilter={handleFilter} selected={key} />
         <Masonry
-          items={projectsList}
+          key={key}
+          items={filteredProjects}
           columnGutter={10}
           overscanBy={1}
           columnWidth={320}
