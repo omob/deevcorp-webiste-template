@@ -39,6 +39,7 @@ const HeaderBanner = styled(SectionWrapper)`
   p {
     font-size: 2.5em;
     display: block;
+    text-transform: capitalize;
   }
 
   @media (max-width: 768px) {

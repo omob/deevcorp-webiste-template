@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { HeaderTitle, SectionWrapper, SectionTitle } from ".";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-const About = () => {
-  const HeaderSection = styled(SectionWrapper)`
-    ${"" /* background-color: ${({ theme }) => theme.bodyBg}; */}
-  `;
+
+
+
+
+  const HeaderSection = styled(SectionWrapper)``;
+
   const HeadingText = styled.h2`
     font-size: 2em;
     text-align: center;
@@ -27,7 +29,7 @@ const About = () => {
     }
     @media (min-width: 1500px) {
       & {
-        font-size: 5em;
+        max-width: 90%;
       }
     }
 
@@ -74,7 +76,6 @@ const About = () => {
   const ServicesSection = styled(SectionWrapper)`
     p {
       display: inline-grid;
-      width: fit-content;
       width: 100%;
       height: 200px;
       padding: 1em;
@@ -84,13 +85,13 @@ const About = () => {
       margin: 20px 10px;
       transition: 0.4s;
       max-width: 400px;
+      align-content: center;
     }
 
     p:hover {
       transform: translate(-20px);
       background-color: ${({ theme }) => theme.text};
       color: ${({ theme }) => theme.bodyBg};
-      ${"" /* border-left: 1px dashed; */}
     }
 
     @media (min-width: 1700px) {
@@ -158,6 +159,12 @@ const About = () => {
     background-color: ${({ theme }) => theme.bodyBg};
   `;
 
+    const AboutSection = styled(SectionWrapper)`
+      background-color: ${({ theme }) => theme.bodyBg};
+    `;
+
+const About = () => {
+
   const services = [
     "Website Design and Development",
     "Software Solutions Development",
@@ -168,7 +175,10 @@ const About = () => {
 
   return (
     <Layout>
-      <SEO title="About" description="About DeevCorp Digital Agency, History, Services and Culture"/>
+      <SEO
+        title="About"
+        description="About DeevCorp Digital Agency, History, Services and Culture"
+      />
       <>
         <HeaderSection style={{ marginTop: "4em" }}>
           <HeadingText>
@@ -178,7 +188,17 @@ const About = () => {
           </HeadingText>
         </HeaderSection>
         <Space></Space>
-        <HistorySection id="history">
+        <AboutSection>
+          <SectionTitle style={{ textAlign: "left" }}>About US</SectionTitle>
+          <Text>
+            At DeevCorp Digital Agency, we adopt cutting edge technology in Web
+            Development, Mobile Application Development, and Software Development to
+            render distinct services to our Clients. We are a team of
+            individuals that combine talent with a passion to make first-class
+            client satisfaction possible.
+          </Text>
+        </AboutSection>
+        {/* <HistorySection id="history">
           <SectionTitle style={{ textAlign: "left" }}>History</SectionTitle>
           <Text>
             I'm baby farm-to-table +1 umami, hell of meditation shoreditch
@@ -199,7 +219,7 @@ const About = () => {
             viral, kitsch hammock hella woke cloud bread farm-to-table kombucha
             umami man bun tilde fashion axe.
           </Text>
-        </HistorySection>
+        </HistorySection> */}
         <ServicesSection id="services">
           <SectionTitle style={{ textAlign: "left" }}>Services</SectionTitle>
           <>
@@ -217,7 +237,7 @@ const About = () => {
           </Text>
         </CallToAction>
         <Space></Space>
-        <CultureSection id="culture">
+        {/* <CultureSection id="culture">
           <SectionTitle style={{ textAlign: "left" }}>Culture</SectionTitle>
           <Text>
             Franzen hell of mustache lo-fi banh mi locavore occupy roof party af
@@ -228,7 +248,7 @@ const About = () => {
             viral, kitsch hammock hella woke cloud bread farm-to-table kombucha
             umami man bun tilde fashion axe.
           </Text>
-        </CultureSection>
+        </CultureSection> */}
       </>
     </Layout>
   );
