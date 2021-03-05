@@ -8,11 +8,14 @@ import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
 
 export const FooterWrapper = styled.footer`
-  text-align: center;
-  padding: 2em;
-  font-family: ;
-  font-size: 18px;
-`;
+         text-align: center;
+         padding: 2em;
+
+         p {
+           font-weight: 300;
+           font-size: 18px;
+         }
+       `;
 
 const SectionWrapper = styled.section`
   padding-left: 10%;
@@ -156,7 +159,9 @@ const Footer = ({ siteTitle }) => {
       {/* )} */}
 
       <FooterWrapper>
-        © {new Date().getFullYear()} {siteTitle}.
+        <p>
+          © {new Date().getFullYear()} {siteTitle}.
+        </p>
       </FooterWrapper>
     </>
   );
