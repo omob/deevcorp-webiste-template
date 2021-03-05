@@ -116,7 +116,8 @@ const Footer = ({ siteTitle }) => {
           </span>{" "}
           or call us on{" "}
           <span>
-            <a href="tel:+2348153706096"> +234(0)8153706097</a>
+            <a href="tel:+23488808144"> +234(0)88808144</a>,
+            <a href="tel:+2348153706096"> +234(0)8153706096</a>
           </span>
         </p>
 
@@ -133,7 +134,7 @@ const Footer = ({ siteTitle }) => {
 
       {/* {showContactForm && ( */}
       <Spring
-        from={{ opacity: 0, height: 0,  }}
+        from={{ opacity: 0, height: 0 }}
         to={
           showContactForm
             ? { opacity: 1, height: window.innerHeight }
