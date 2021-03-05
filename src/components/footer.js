@@ -8,11 +8,14 @@ import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
 
 export const FooterWrapper = styled.footer`
-  text-align: center;
-  padding: 2em;
-  font-family: ;
-  font-size: 18px;
-`;
+         text-align: center;
+         padding: 2em;
+
+         p {
+           font-weight: 300;
+           font-size: 18px;
+         }
+       `;
 
 const SectionWrapper = styled.section`
   padding-left: 10%;
@@ -116,7 +119,8 @@ const Footer = ({ siteTitle }) => {
           </span>{" "}
           or call us on{" "}
           <span>
-            <a href="tel:+2348153706096"> +234(0)8153706097</a>
+            <a href="tel:+23488808144"> +234(0)88808144</a>,
+            <a href="tel:+2348153706096"> +234(0)8153706096</a>
           </span>
         </p>
 
@@ -133,7 +137,7 @@ const Footer = ({ siteTitle }) => {
 
       {/* {showContactForm && ( */}
       <Spring
-        from={{ opacity: 0, height: 0,  }}
+        from={{ opacity: 0, height: 0 }}
         to={
           showContactForm
             ? { opacity: 1, height: window.innerHeight }
@@ -155,7 +159,9 @@ const Footer = ({ siteTitle }) => {
       {/* )} */}
 
       <FooterWrapper>
-        © {new Date().getFullYear()} {siteTitle}.
+        <p>
+          © {new Date().getFullYear()} {siteTitle}.
+        </p>
       </FooterWrapper>
     </>
   );
