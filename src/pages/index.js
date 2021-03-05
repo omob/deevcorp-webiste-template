@@ -136,7 +136,17 @@ const IndexPage = () => {
           </Spring>
         </SectionTwo> */}
         <SectionThree>
-          <SectionTitle>Portfolio</SectionTitle>
+          <Spring
+            from={{ opacity: 0 }}
+            to={{ opacity: 1 }}
+            config={{ duration: 3000, delay: 1000 }}
+          >
+            {props => (
+              <animated.div style={props}>
+                <SectionTitle>Portfolio</SectionTitle>
+              </animated.div>
+            )}
+          </Spring>
           <Spring
             from={{ opacity: 0, transform: "translateY(250px)" }}
             to={{ opacity: 1, transform: "tranlateY(0)" }}
