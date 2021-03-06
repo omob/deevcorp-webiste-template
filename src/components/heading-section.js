@@ -69,7 +69,7 @@ const HeadingSection = () => {
           <Typing.Backspace count={20}  delay={2000} />
           We Build
           <Typing.Backspace count={20} delay={2000} />
-          Result Oriented
+          We Deliver
           <Typing.Backspace count={20} delay={1000} />
           <span>We Design</span>
         </Typing>

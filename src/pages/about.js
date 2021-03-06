@@ -192,10 +192,10 @@ const About = () => {
           <SectionTitle style={{ textAlign: "left" }}>About US</SectionTitle>
           <Text>
             At DeevCorp Digital Agency, we adopt cutting edge technology in Web
-            Development, Mobile Application Development, and Software Development to
-            render distinct services to our Clients. We are a team of
-            individuals that combine talent with a passion to make first-class
-            client satisfaction possible.
+            Development, Mobile Application Development, and Software
+            Development to render distinct services to our Clients. We are a
+            team of young and talented individuals driven by a passion to
+            deliver top-notch services to Client's satisfaction.
           </Text>
         </AboutSection>
         {/* <HistorySection id="history">
