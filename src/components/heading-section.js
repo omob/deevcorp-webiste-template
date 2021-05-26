@@ -143,8 +143,7 @@ const HeadingSection = () => {
         >
           {props => (
             <animated.p style={props}>
-              At DeevCorp Digital Agency, we create <span>simple</span>, yet{" "}
-              <span>professional </span> websites and applications using modern
+              At DeevCorp Digital Agency, we create simple, yet{" "} professional websites and applications using modern
               design trends and technology.{" "}
               <Link to="/about">
                 <span>
