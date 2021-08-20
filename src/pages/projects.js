@@ -76,6 +76,15 @@ import SEO from "../components/seo";
     }
   `;
 
+  const NoProjectText = styled.p`
+    text-align: center;
+    font-size: 1.5em;
+
+    @media (max-width: 550px) {
+      font-size: 1.2em
+    }
+  `;
+
 const MasonryCard = ({
   index,
   data: {
@@ -169,7 +178,11 @@ const Projects = () => {
       </HeadingSection>
 
       <PortfolioWrapper>
-        <ProjectsFilter items={filters} onFilter={handleFilter} selected={key} />
+        <ProjectsFilter
+          items={filters}
+          onFilter={handleFilter}
+          selected={key}
+        />
         <Masonry
           key={key}
           items={filteredProjects}
@@ -178,6 +191,12 @@ const Projects = () => {
           columnWidth={320}
           render={MasonryCard}
         />
+        {projects.length > 0 && filteredProjects.length === 0 && (
+          <NoProjectText>
+            {" "}
+            No project match selected filter at this time. Please check back later.
+          </NoProjectText>
+        )}
       </PortfolioWrapper>
     </Layout>
   );
