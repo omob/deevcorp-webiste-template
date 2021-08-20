@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HeaderTitle, SectionWrapper, SectionTitle } from ".";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { Link } from 'gatsby';
 
 
 
@@ -38,10 +39,6 @@ import SEO from "../components/seo";
       background-color: ${({ theme }) => theme.text};
       color: ${({ theme }) => theme.bodyBg};
       transition: 0.2s ease-in;
-    }
-    span:hover {
-      background-color: ${({ theme }) => theme.bodyBg};
-      color: gray;
     }
   `;
   const HistorySection = styled(SectionWrapper)`
@@ -87,6 +84,8 @@ import SEO from "../components/seo";
       max-width: 400px;
       align-content: center;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     p:hover {
       transform: translate(-20px);
@@ -224,7 +223,9 @@ const About = () => {
           <SectionTitle style={{ textAlign: "left" }}>Services</SectionTitle>
           <>
             {services.map(service => (
-              <Text>{service}</Text>
+              <Link to="/projects">
+                <Text>{service}</Text>
+              </Link>
             ))}
           </>
         </ServicesSection>
