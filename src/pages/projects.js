@@ -28,11 +28,6 @@ import SEO from "../components/seo";
       color: ${({ theme }) => theme.bodyBg};
       transition: 0.2s ease-in;
     }
-    span:hover {
-      background-color: ${({ theme }) => theme.bodyBg};
-      color: gray;
-    }
-
     @media (min-width: 550px) {
       & {
         font-size: 3em;
