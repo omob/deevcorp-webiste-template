@@ -1,12 +1,9 @@
+import { Link } from 'gatsby';
 import React from "react";
 import styled from "styled-components";
-import { HeaderTitle, SectionWrapper, SectionTitle } from ".";
+import { SectionTitle, SectionWrapper } from ".";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { Link } from 'gatsby';
-
-
-
 
   const HeaderSection = styled(SectionWrapper)``;
 

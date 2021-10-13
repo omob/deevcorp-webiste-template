@@ -3,15 +3,12 @@ import React, { useRef, useState } from "react";
 import { animated } from "react-spring";
 import { Spring } from "react-spring/renderprops";
 import styled from "styled-components";
-import videoSrc from "../assets/video/demo.mp4";
 import Button from "../components/button";
 import Clients from "../components/clients";
 import HeadingSection from "../components/heading-section";
 import Layout from "../components/layout";
-import PlayButton from "../components/playButton";
 import ProjectsWrapper from "../components/projects";
 import SEO from "../components/seo";
-import team from "../images/team.png";
 
 const ContainerWrapper = styled.section``;
 
@@ -110,31 +107,6 @@ const IndexPage = () => {
         <SectionOne>
           <HeadingSection></HeadingSection>
         </SectionOne>
-
-        {/* <SectionTwo>
-          <Spring
-            from={{ opacity: 0 }}
-            to={{ opacity: 1 }}
-            config={{ duration: 1000, delay: 2000 }}
-          >
-            {props => (
-              <animated.div style={props}>
-                <SectionTitle>We Innovate</SectionTitle>
-                <VideoWrapper>
-                  <video
-                    onEnded={handleVideoStatusChange}
-                    onPause={handleVideoStatusChange}
-                    ref={videoRef}
-                  >
-                    <source src={videoSrc}></source>
-                    <track kind="captions" srcLang="en" />
-                  </video>
-                  {showPlayButton && <PlayButton onPress={handleVideoPlay} />}
-                </VideoWrapper>
-              </animated.div>
-            )}
-          </Spring>
-        </SectionTwo> */}
         <SectionThree>
           <Spring
             from={{ opacity: 0 }}
